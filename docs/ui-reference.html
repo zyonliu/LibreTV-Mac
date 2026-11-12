@@ -1,0 +1,670 @@
+<div id="ltv-design" aria-label="LibreTV Mac 界面设计">
+  <div class="ltv-window" data-theme="light" data-glass="true">
+    <div class="ltv-titlebar">
+      <span class="ltv-lights" aria-hidden="true"><b></b><b></b><b></b></span>
+      <span class="ltv-appname"><img src="https://cdn.jsdelivr.net/gh/LibreSpark/LibreTV-portal@main/assets/icon-192.png" width="20" height="20" alt="LibreTV 官方图标">LibreTV</span>
+      <button class="ltv-theme-tool cursor-interaction" data-action="theme-cycle" aria-label="切换浅色与深色外观" data-tooltip="快速切换浅色 / 深色"> <i data-lucide="sun" aria-hidden="true"></i><span>浅色</span></button>
+    </div>
+    <header class="ltv-toolbar">
+      <div class="ltv-backtools">
+        <button class="ltv-icon cursor-interaction" data-action="back" aria-label="返回上一页" data-tooltip="返回上一页 · ⌘[" disabled><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+        <button class="ltv-icon cursor-interaction" data-action="forward" aria-label="前进" data-tooltip="前进 · ⌘]" disabled><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+        <button class="ltv-icon cursor-interaction" data-action="home" aria-label="当前模式主页" data-tooltip="返回当前模式主页"><i data-lucide="house" aria-hidden="true"></i></button>
+      </div>
+      <span class="ltv-crumb">设置 / 桌面版设置</span>
+      <div class="ltv-modes" role="group" aria-label="主页模式">
+        <button class="cursor-interaction" data-mode="desktop" aria-pressed="true"><i data-lucide="panels-top-left" aria-hidden="true"></i>桌面版</button>
+        <button class="cursor-interaction" data-mode="original" aria-pressed="false"><i data-lucide="globe" aria-hidden="true"></i>原版</button>
+      </div>
+    </header>
+    <div class="ltv-body">
+      <aside class="ltv-sidebar">
+        <span class="ltv-section-label">资料库</span>
+        <nav aria-label="主导航">
+          <button class="ltv-nav cursor-interaction" data-page="discover"><i data-lucide="compass" aria-hidden="true"></i><span>发现</span></button>
+          <button class="ltv-nav cursor-interaction" data-page="live"><i data-lucide="radio" aria-hidden="true"></i><span>直播</span></button>
+          <button class="ltv-nav cursor-interaction" data-page="history"><i data-lucide="history" aria-hidden="true"></i><span>历史</span></button>
+        </nav>
+        <div class="ltv-sidebar-bottom">
+          <button class="ltv-nav cursor-interaction" data-page="theme"><i data-lucide="palette" aria-hidden="true"></i><span>主题</span></button>
+          <button class="ltv-nav cursor-interaction" data-page="settings" aria-current="page"><i data-lucide="settings-2" aria-hidden="true"></i><span>设置</span></button>
+          <span class="ltv-small ltv-version">Mac 桌面版 · 设计预览</span>
+        </div>
+      </aside>
+      <main class="ltv-content" id="ltv-content"><section><div class="ltv-pagehead"><div><h1>桌面版设置</h1><p>管理保存位置、媒体缓存与窗口偏好。</p></div></div><div class="ltv-tabs" role="group" aria-label="设置分类"><button class="cursor-interaction " type="button" data-tab="original" aria-pressed="false">原版设置</button><button class="cursor-interaction " type="button" data-tab="desktop" aria-pressed="true">桌面版设置</button><button class="cursor-interaction " type="button" data-tab="sources" aria-pressed="false">找源</button><button class="cursor-interaction " type="button" data-tab="updates" aria-pressed="false">更新</button></div><h2 class="ltv-settings-subhead" style="margin-top:0">下载与缓存</h2><div class="ltv-path-row"><h3>下载位置</h3><p>保存导出的影片文件；更改位置用于新下载任务。</p><div class="ltv-path-controls"><div class="ltv-path-display"><i data-lucide="folder" aria-hidden="true"></i><span data-tooltip="~/Downloads/LibreTV">~/Downloads/LibreTV</span></div><button class="cursor-interaction " type="button" data-path-edit="download">更改…</button><button class="cursor-interaction ltv-icon" type="button" data-path-reveal="download" aria-label="在访达中打开下载位置" data-tooltip="在访达中打开"><i data-lucide="folder-open" aria-hidden="true"></i></button><button class="cursor-interaction ltv-quiet" type="button" data-path-reset="download" data-tooltip="恢复默认位置">默认</button></div></div><div class="ltv-settings-row"><div><h3>每次下载询问保存位置</h3><p>开启后，下载时选择保存的文件夹</p></div><input class="ltv-switch" type="checkbox" id="ltv-ask-download" aria-label="每次下载询问保存位置" ></div><div class="ltv-path-row"><h3>播放缓存位置</h3><p>桌面版管理的临时媒体分片，可单独迁移。</p><div class="ltv-path-controls"><div class="ltv-path-display"><i data-lucide="folder" aria-hidden="true"></i><span data-tooltip="~/Library/Caches/LibreTV/Media">~/Library/Caches/LibreTV/Media</span></div><button class="cursor-interaction " type="button" data-path-edit="cache">更改…</button><button class="cursor-interaction ltv-icon" type="button" data-path-reveal="cache" aria-label="在访达中打开播放缓存位置" data-tooltip="在访达中打开"><i data-lucide="folder-open" aria-hidden="true"></i></button><button class="cursor-interaction ltv-quiet" type="button" data-path-reset="cache" data-tooltip="恢复默认位置">默认</button></div></div><div class="ltv-settings-row"><div><h3>播放缓存上限</h3><p>达到上限后清理最久未使用的临时分片</p></div><div class="ltv-cache-limits" role="group" aria-label="播放缓存容量上限"><button class="cursor-interaction " type="button" data-cache-limit="5" aria-pressed="false">5 GB</button><button class="cursor-interaction " type="button" data-cache-limit="10" aria-pressed="true">10 GB</button><button class="cursor-interaction " type="button" data-cache-limit="20" aria-pressed="false">20 GB</button></div></div><div class="ltv-settings-row"><div><h3>临时播放缓存</h3><p>示例占用 2.4 GB · 不包括已导出的影片</p></div><button class="cursor-interaction ltv-danger" type="button" data-action="clear-media-cache" >清理缓存</button></div><div class="ltv-settings-row"><div><h3>网页数据</h3><p>观看历史、源配置与登录状态，由应用独立保存</p></div><span class="ltv-small">由系统管理</span></div><h2 class="ltv-settings-subhead">窗口与启动</h2><div class="ltv-settings-row"><div><h3>默认主页</h3><p>下次打开时使用上次选择的模式</p></div><span class="ltv-muted">记住上次选择</span></div><div class="ltv-settings-row"><div><h3>窗口与布局</h3><p>记住窗口尺寸、位置与侧栏状态</p></div><input class="ltv-switch" type="checkbox" id="ltv-remember-window" checked aria-label="记住窗口位置"></div><div class="ltv-settings-row"><div><h3>启动体验</h3><p>在原窗口内显示启动状态</p></div><button class="cursor-interaction " type="button" data-action="splash">查看启动页</button></div><div class="ltv-settings-row"><div><h3>主题与显示</h3><p>外观、玻璃效果与对比度</p></div><button class="cursor-interaction " type="button" data-action="theme">调整主题</button></div><p class="ltv-update-note">目录与用量均为交互示例，尚未连接本机文件管理。</p></section></main>
+    </div>
+    <div class="ltv-status" role="status" aria-live="polite"><span id="ltv-message">设计预览 · 影片、源与测速结果均为示例</span><span class="ltv-status-right">本地数据 · 自动保存</span></div>
+  </div>
+</div>
+<style>
+  #ltv-design { --lt-bg:light-dark(#f7f8fc,#10141d); --lt-panel:light-dark(#ffffff,#1b2230); --lt-side:light-dark(#edf0f7,#171d29); --lt-text:light-dark(#202939,#edf1fa); --lt-sub:light-dark(#526078,#afbbcf); --lt-line:light-dark(#d5dce9,#374156); --lt-accent:light-dark(#4840c6,#c0bbff); --lt-onaccent:light-dark(#ffffff,#211b48); --lt-soft:light-dark(#e9e7fb,#34314e); --lt-hover:light-dark(#e6eaf4,#30394c); --lt-ok:light-dark(#116a4a,#81dfb9); --lt-bad:light-dark(#b02740,#ff9db1); --lt-warn:light-dark(#87520e,#f3cd81); --lt-glass:light-dark(rgb(252 253 255 / .74),rgb(26 33 48 / .83)); --lt-glass-line:light-dark(rgb(255 255 255 / .94),rgb(255 255 255 / .16)); --lt-shadow:light-dark(rgb(40 52 90 / .12),rgb(0 0 0 / .28)); --lt-radius:12px; --lt-sidebar:176px; font:13px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC",sans-serif; width:100%; }
+  #ltv-design *,#ltv-design *::before,#ltv-design *::after { box-sizing:border-box; }
+  #ltv-design [hidden] { display:none!important; }
+  #ltv-design .ltv-window { color:var(--lt-text); background:radial-gradient(ellipse at 3% 0%,light-dark(#d8dfff,#343451),transparent 45%),radial-gradient(ellipse at 10% 95%,light-dark(#d9ebed,#163e48),transparent 50%),var(--lt-bg); border:1px solid var(--lt-line); border-radius:18px; overflow:hidden; color-scheme:light dark; isolation:isolate; box-shadow:0 10px 36px var(--lt-shadow),inset 0 1px 0 var(--lt-glass-line); }
+  #ltv-design .ltv-window[data-theme="light"] { color-scheme:light; }
+  #ltv-design .ltv-window[data-theme="dark"] { color-scheme:dark; }
+  #ltv-design button,#ltv-design input { font:inherit; color:inherit; }
+  #ltv-design button { display:inline-flex; align-items:center; justify-content:center; gap:7px; border:1px solid var(--lt-line); border-radius:8px; background:var(--lt-panel); padding:7px 12px; min-height:34px; white-space:nowrap; }
+  #ltv-design button:hover:not(:disabled) { background:var(--lt-hover); }
+  #ltv-design button:disabled { opacity:1; color:var(--lt-sub); background:var(--lt-side); border-color:var(--lt-line); cursor:default; }
+  #ltv-design button.ltv-primary:disabled { background:var(--lt-side); color:var(--lt-sub); border-color:var(--lt-line); }
+  #ltv-design button:focus-visible,#ltv-design input:focus-visible { outline:2px solid var(--lt-accent); outline-offset:3px; }
+  #ltv-design button.ltv-primary { background:var(--lt-accent); color:var(--lt-onaccent); border-color:transparent; }
+  #ltv-design button.ltv-primary:hover:not(:disabled) { background:light-dark(#3d35af,#d1cdff); color:var(--lt-onaccent); filter:none; }
+  #ltv-design button.ltv-primary:active:not(:disabled) { background:light-dark(#322a96,#aaa3f0); color:var(--lt-onaccent); filter:none; }
+  #ltv-design button.ltv-quiet { background:transparent; border-color:transparent; }
+  #ltv-design button.ltv-danger { color:var(--lt-bad); }
+  #ltv-design button.ltv-danger:disabled { color:var(--lt-sub); }
+  #ltv-design button.ltv-danger:hover:not(:disabled) { background:light-dark(#fce9ee,#462434); color:var(--lt-bad); }
+  #ltv-design button.ltv-danger:active:not(:disabled) { background:light-dark(#f8d9e2,#542d40); color:var(--lt-bad); }
+  #ltv-design svg { width:16px; height:16px; flex-shrink:0; }
+  #ltv-design h1,#ltv-design h2,#ltv-design h3,#ltv-design p { margin:0; }
+  #ltv-design h1 { font-size:25px; font-weight:650; letter-spacing:-.5px; }
+  #ltv-design h2 { font-size:16px; font-weight:600; }
+  #ltv-design h3 { font-size:14px; font-weight:550; }
+  #ltv-design .ltv-small { font-size:11px; color:var(--lt-sub); }
+  #ltv-design .ltv-muted { color:var(--lt-sub); }
+  #ltv-design .ltv-titlebar { height:40px; display:flex; align-items:center; justify-content:center; position:relative; border-bottom:1px solid var(--lt-glass-line); background:var(--lt-glass); backdrop-filter:blur(26px) saturate(1.5); -webkit-backdrop-filter:blur(26px) saturate(1.5); }
+  #ltv-design .ltv-lights { position:absolute; left:16px; display:flex; gap:8px; }
+  #ltv-design .ltv-lights b { width:11px; height:11px; border-radius:50%; background:#ff6159; }
+  #ltv-design .ltv-lights b:nth-child(2) { background:#ffbd2e; }
+  #ltv-design .ltv-lights b:nth-child(3) { background:#28c840; }
+  #ltv-design .ltv-appname { display:flex; align-items:center; gap:7px; font-weight:600; }
+  #ltv-design .ltv-appname img { object-fit:contain; border-radius:4px; }
+  #ltv-design .ltv-local { position:absolute; right:104px; color:var(--lt-sub); font-size:11px; }
+  #ltv-design .ltv-toolbar { min-height:64px; padding:12px 18px; display:flex; gap:16px; align-items:center; border-bottom:1px solid var(--lt-line); background:var(--lt-glass); backdrop-filter:blur(26px) saturate(1.5); -webkit-backdrop-filter:blur(26px) saturate(1.5); box-shadow:inset 0 1px 0 var(--lt-glass-line); }
+  #ltv-design .ltv-backtools { display:flex; gap:4px; background:var(--lt-glass); padding:3px; border:1px solid var(--lt-glass-line); border-radius:22px; box-shadow:0 2px 7px var(--lt-shadow),inset 0 1px 0 var(--lt-glass-line); }
+  #ltv-design button.ltv-icon { padding:7px; width:32px; min-height:32px; border-color:transparent; background:transparent; }
+  #ltv-design .ltv-crumb { color:var(--lt-sub); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #ltv-design .ltv-modes { display:flex; border:1px solid var(--lt-glass-line); padding:4px; gap:3px; border-radius:22px; background:var(--lt-glass); margin-left:auto; flex-shrink:0; box-shadow:0 2px 7px var(--lt-shadow),inset 0 1px 0 var(--lt-glass-line); }
+  #ltv-design .ltv-modes button { min-height:28px; padding:3px 12px; border-color:transparent; border-radius:18px; background:transparent; font-size:12px; }
+  #ltv-design .ltv-modes button[aria-pressed="true"] { background:var(--lt-panel); box-shadow:0 1px 3px #00000012; color:var(--lt-accent); }
+  #ltv-design .ltv-body { display:grid; grid-template-columns:var(--lt-sidebar) minmax(0,1fr); height:650px; min-height:0; }
+  #ltv-design .ltv-body.ltv-original-body { grid-template-columns:minmax(0,1fr); }
+  #ltv-design .ltv-sidebar { color:var(--lt-text); background:var(--lt-glass); backdrop-filter:blur(30px) saturate(1.5); -webkit-backdrop-filter:blur(30px) saturate(1.5); border-right:1px solid var(--lt-line); padding:24px 12px 16px; display:flex; flex-direction:column; box-shadow:inset 1px 0 0 var(--lt-glass-line); }
+  #ltv-design .ltv-section-label { font-size:11px; color:var(--lt-sub); margin:0 12px 12px; }
+  #ltv-design .ltv-sidebar nav { display:grid; gap:6px; }
+  #ltv-design button.ltv-nav { width:100%; justify-content:flex-start; border-color:transparent; background:transparent; padding:10px 12px; gap:10px; height:40px; border-radius:11px; }
+  #ltv-design button.ltv-nav svg { color:var(--lt-accent); }
+  #ltv-design button.ltv-nav[aria-current="page"] { background:var(--lt-soft); color:var(--lt-accent); font-weight:600; }
+  #ltv-design .ltv-sidebar-bottom { margin-top:auto; display:grid; gap:6px; }
+  #ltv-design .ltv-version { padding:16px 12px 0; }
+  #ltv-design .ltv-content { color:var(--lt-text); background:var(--lt-bg); min-width:0; min-height:0; padding:28px; position:relative; overflow:auto; scrollbar-gutter:stable; container-type:inline-size; container-name:ltvcontent; }
+  #ltv-design .ltv-content > section { min-height:100%; }
+  #ltv-design .ltv-pagehead { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; min-height:58px; }
+  #ltv-design .ltv-pagehead p { color:var(--lt-sub); margin-top:4px; font-size:12px; }
+  #ltv-design .ltv-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  #ltv-design .ltv-search { min-height:40px; border:1px solid var(--lt-line); border-radius:9px; background:var(--lt-panel); display:flex; align-items:center; gap:9px; padding:3px 7px 3px 12px; flex:1; min-width:0; }
+  #ltv-design .ltv-search:focus-within { border-color:var(--lt-accent); }
+  #ltv-design input.ltv-text { width:100%; min-width:0; background:transparent; border:0; outline:none; padding:3px 0; height:30px; }
+  #ltv-design .ltv-search input:focus-visible { outline:none; }
+  #ltv-design .ltv-search:has(input:focus-visible) { outline:2px solid var(--lt-accent); outline-offset:3px; }
+  #ltv-design .ltv-search input::placeholder { color:var(--lt-sub); }
+  #ltv-design button.ltv-clear { width:26px; padding:3px; min-height:26px; background:transparent; border-color:transparent; flex-shrink:0; }
+  #ltv-design .ltv-clear svg { width:13px; height:13px; }
+  #ltv-design .ltv-kbd { font-size:11px; color:var(--lt-sub); white-space:nowrap; }
+  #ltv-design .ltv-tabs { display:flex; gap:4px; padding:4px; border-radius:10px; background:var(--lt-side); border:1px solid var(--lt-line); margin-bottom:20px; width:max-content; max-width:100%; }
+  #ltv-design .ltv-tabs button { background:transparent; border-color:transparent; min-height:30px; padding:5px 12px; }
+  #ltv-design .ltv-tabs button[aria-pressed="true"] { background:var(--lt-panel); box-shadow:0 1px 3px #00000012; color:var(--lt-accent); }
+  #ltv-design .ltv-filterbar { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:14px 0 20px; }
+  #ltv-design .ltv-filterbar button { padding:4px 10px; min-height:28px; background:transparent; border-color:transparent; font-size:12px; }
+  #ltv-design .ltv-filterbar button[aria-pressed="true"] { background:var(--lt-soft); color:var(--lt-accent); }
+  #ltv-design .ltv-sectionhead { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:24px 0 12px; }
+  #ltv-design .ltv-feature { display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; padding:18px 20px; border:1px solid var(--lt-line); border-radius:var(--lt-radius); background:var(--lt-panel); min-height:100px; }
+  #ltv-design .ltv-feature p { color:var(--lt-sub); margin-top:5px; font-size:12px; }
+  #ltv-design .ltv-feature h2 { margin-top:5px; }
+  #ltv-design .ltv-posters { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+  #ltv-design button.ltv-film { display:block; padding:0; background:transparent; border:0; min-width:0; text-align:left; white-space:normal; }
+  #ltv-design button.ltv-film:hover { background:transparent; }
+  #ltv-design .ltv-cover { display:flex; align-items:flex-end; padding:14px; height:166px; border-radius:var(--lt-radius); position:relative; overflow:hidden; color:#fff; background:linear-gradient(160deg,#42546b,#14232c); }
+  #ltv-design .ltv-cover::before { content:""; width:160px; height:160px; position:absolute; background:#ffffff16; border:1px solid #ffffff25; border-radius:50%; right:-60px; top:-35px; }
+  #ltv-design .ltv-film:nth-child(2) .ltv-cover { background:linear-gradient(155deg,#847561,#2e3a31); }
+  #ltv-design .ltv-film:nth-child(3) .ltv-cover { background:linear-gradient(155deg,#6e5b77,#30273b); }
+  #ltv-design .ltv-film:nth-child(4) .ltv-cover { background:linear-gradient(155deg,#428997,#183b4d); }
+  #ltv-design .ltv-cover span { font-size:22px; letter-spacing:3px; font-weight:500; writing-mode:vertical-rl; z-index:1; }
+  #ltv-design .ltv-film h3 { margin:9px 0 2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #ltv-design .ltv-film .ltv-small { display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+  #ltv-design .ltv-status { display:flex; align-items:center; justify-content:space-between; gap:12px; height:32px; padding:5px 16px; border-top:1px solid var(--lt-line); color:var(--lt-sub); background:var(--lt-panel); font-size:11px; overflow:hidden; }
+  #ltv-design .ltv-status button { min-height:20px; height:20px; padding:0 6px; font-size:11px; }
+  #ltv-design #ltv-message { min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+  #ltv-design .ltv-status-right { white-space:nowrap; flex-shrink:0; }
+  #ltv-design .ltv-note { color:var(--lt-sub); font-size:12px; margin:14px 0; }
+  #ltv-design .ltv-source { display:grid; grid-template-columns:minmax(0,1fr) 118px 126px; align-items:center; gap:12px; padding:15px 0; min-height:79px; border-bottom:1px solid var(--lt-line); }
+  #ltv-design .ltv-source h3 { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #ltv-design .ltv-source p { color:var(--lt-sub); font-size:11px; margin-top:4px; overflow-wrap:anywhere; }
+  #ltv-design .ltv-source .ltv-source-actions { display:flex; justify-content:flex-end; gap:6px; }
+  #ltv-design .ltv-source-actions button { font-size:12px; padding:5px 8px; min-height:30px; }
+  #ltv-design .ltv-ok { color:var(--lt-ok); }
+  #ltv-design .ltv-fixed-status { font-variant-numeric:tabular-nums; font-size:12px; }
+  #ltv-design .ltv-empty { text-align:center; padding:64px 16px; color:var(--lt-sub); }
+  #ltv-design .ltv-settings-row { display:flex; justify-content:space-between; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--lt-line); }
+  #ltv-design .ltv-settings-row p { color:var(--lt-sub); font-size:12px; margin-top:4px; }
+  #ltv-design .ltv-theme-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:24px 0; }
+  #ltv-design button.ltv-theme-choice { padding:14px; display:flex; flex-direction:column; min-width:0; gap:14px; border-radius:var(--lt-radius); }
+  #ltv-design .ltv-theme-choice[aria-pressed="true"] { border:2px solid var(--lt-accent); padding:13px; }
+  #ltv-design .ltv-theme-sample { width:100%; height:100px; border-radius:6px; display:grid; grid-template-columns:23% 1fr; border:1px solid #b0b5c444; overflow:hidden; background:#edf0f7; }
+  #ltv-design .ltv-theme-sample::before { content:""; background:#e0e5ef; }
+  #ltv-design .ltv-theme-sample::after { content:""; background:#fff; margin:14px 10px; border-radius:4px; }
+  #ltv-design .ltv-theme-sample.dark { background:#131720; }
+  #ltv-design .ltv-theme-sample.dark::before { background:#202736; }
+  #ltv-design .ltv-theme-sample.dark::after { background:#373e50; }
+  #ltv-design .ltv-theme-sample.system { background:linear-gradient(120deg,#edf0f7 50%,#131720 50%); }
+  #ltv-design .ltv-history-row { display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--lt-line); align-items:center; }
+  #ltv-design .ltv-thumb { width:100px; height:62px; flex-shrink:0; border-radius:8px; background:linear-gradient(135deg,#42546b,#14232c); display:flex; align-items:center; justify-content:center; color:#fff; }
+  #ltv-design .ltv-history-copy { flex:1; min-width:0; }
+  #ltv-design .ltv-history-copy p { color:var(--lt-sub); font-size:12px; margin:4px 0 8px; }
+  #ltv-design .ltv-meter { width:100%; max-width:190px; height:3px; background:var(--lt-line); border-radius:2px; }
+  #ltv-design .ltv-meter b { display:block; height:100%; background:var(--lt-accent); border-radius:2px; }
+  #ltv-design .ltv-live-layout { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(170px,1fr); gap:18px; margin-top:20px; }
+  #ltv-design .ltv-video { background:#080c13; color:#e7edf9; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:260px; border-radius:var(--lt-radius); gap:12px; text-align:center; padding:18px; }
+  #ltv-design .ltv-video button { color:#e7edf9; border-color:#546074; background:#242d3d; }
+  #ltv-design .ltv-video button:hover:not(:disabled) { color:#ffffff; background:#36435a; }
+  #ltv-design .ltv-video button:active:not(:disabled) { color:#ffffff; background:#43546e; }
+  #ltv-design .ltv-channel { width:100%; justify-content:space-between; margin-bottom:8px; min-height:48px; }
+  #ltv-design .ltv-channel[aria-pressed="true"] { background:var(--lt-soft); color:var(--lt-accent); border-color:var(--lt-accent); }
+  #ltv-design .ltv-original-mark { display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:24px; color:var(--lt-sub); font-size:12px; }
+  #ltv-design .ltv-original-hero { display:flex; flex-direction:column; align-items:center; margin:42px auto 28px; max-width:540px; gap:12px; }
+  #ltv-design .ltv-original-hero h1 { background:linear-gradient(100deg,#1d9ecb,#8a56c5); background-clip:text; color:transparent; font-size:36px; }
+  #ltv-design .ltv-original-hero .ltv-search { width:100%; }
+  #ltv-design .ltv-original-hero .ltv-row { justify-content:center; }
+  #ltv-design .ltv-detail { display:grid; grid-template-columns:140px minmax(0,1fr); gap:24px; margin-top:24px; }
+  #ltv-design .ltv-detail .ltv-cover { height:205px; }
+  #ltv-design .ltv-episodes { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:14px; }
+  #ltv-design .ltv-splash { min-height:554px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center; }
+  #ltv-design .ltv-splash img { width:80px; height:80px; object-fit:contain; }
+  #ltv-design .ltv-startup-state { height:48px; color:var(--lt-sub); }
+  #ltv-design .ltv-startup-state strong { color:var(--lt-text); display:block; font-weight:500; margin-bottom:4px; }
+  #ltv-design .ltv-progress { height:4px; width:180px; background:var(--lt-line); overflow:hidden; border-radius:3px; }
+  #ltv-design .ltv-progress span { width:48%; height:100%; display:block; background:var(--lt-accent); }
+  #ltv-design .ltv-select { position:relative; }
+  #ltv-design .ltv-select-menu { position:absolute; top:calc(100% + 8px); left:0; width:min(240px,calc(100cqw - 12px)); border:1px solid var(--lt-line); border-radius:14px; box-shadow:0 12px 32px var(--lt-shadow),inset 0 1px 0 var(--lt-glass-line); background:var(--lt-panel); z-index:30; padding:8px; }
+  #ltv-design .ltv-select-menu .ltv-search { min-height:34px; padding-left:8px; margin-bottom:8px; }
+  #ltv-design .ltv-select-menu button.ltv-select-option { width:100%; justify-content:flex-start; border-color:transparent; }
+  #ltv-design .ltv-check { width:16px; height:16px; accent-color:var(--lt-accent); }
+  #ltv-design .ltv-undo { color:var(--lt-accent); }
+  #ltv-design .ltv-glass-tag { display:inline-flex; gap:6px; align-items:center; padding:5px 9px; border-radius:20px; background:var(--lt-soft); color:var(--lt-accent); font-size:11px; white-space:nowrap; }
+  #ltv-design .ltv-source-searchbar { display:flex; align-items:center; gap:8px; }
+  #ltv-design .ltv-source-searchbar > .ltv-select { flex-shrink:0; }
+  #ltv-design .ltv-source-searchbar .ltv-search { min-width:80px; }
+  #ltv-design .ltv-source-searchbar button { min-height:38px; }
+  #ltv-design .ltv-source-controls { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:16px 0 12px; flex-wrap:wrap; }
+  #ltv-design .ltv-source-views { display:flex; gap:6px; }
+  #ltv-design .ltv-source-views button { padding:5px 10px; min-height:30px; border-color:transparent; background:transparent; }
+  #ltv-design .ltv-source-views button[aria-pressed="true"] { color:var(--lt-accent); background:var(--lt-soft); }
+  #ltv-design .ltv-counter { display:inline-flex; justify-content:center; align-items:center; min-width:20px; font-size:11px; font-variant-numeric:tabular-nums; }
+  #ltv-design .ltv-source-filters { display:flex; align-items:center; gap:10px; font-size:12px; }
+  #ltv-design .ltv-source-filters button { min-height:30px; padding:4px 8px; }
+  #ltv-design .ltv-checkbox-label { display:inline-flex; align-items:center; gap:7px; color:var(--lt-text); white-space:nowrap; }
+  #ltv-design input.ltv-check { width:16px; height:16px; margin:0; accent-color:var(--lt-accent); flex-shrink:0; }
+  #ltv-design input.ltv-check:disabled { opacity:.6; }
+  #ltv-design .ltv-bulkbar { position:sticky; top:-1px; z-index:15; margin-bottom:8px; padding:10px 12px 8px; border:1px solid var(--lt-line); border-radius:14px; background:var(--lt-glass); backdrop-filter:blur(26px) saturate(1.4); -webkit-backdrop-filter:blur(26px) saturate(1.4); box-shadow:inset 0 1px 0 var(--lt-glass-line),0 4px 12px var(--lt-shadow); }
+  #ltv-design .ltv-bulk-main { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  #ltv-design .ltv-bulk-selection { display:flex; align-items:center; gap:8px; flex-shrink:0; font-size:12px; }
+  #ltv-design #ltv-selected-count { font-variant-numeric:tabular-nums; display:inline-block; min-width:64px; }
+  #ltv-design .ltv-bulk-actions { display:flex; gap:6px; }
+  #ltv-design .ltv-bulk-actions button { min-height:30px; font-size:12px; padding:5px 9px; }
+  #ltv-design .ltv-bulk-actions button span { display:inline-block; min-width:3ch; font-variant-numeric:tabular-nums; }
+  #ltv-design .ltv-probe-summary { display:flex; gap:10px; align-items:center; justify-content:space-between; height:26px; margin-top:5px; font-size:11px; color:var(--lt-sub); font-variant-numeric:tabular-nums; }
+  #ltv-design #ltv-probe-copy { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #ltv-design button.ltv-cancel-probe { min-height:22px; padding:0 6px; font-size:11px; }
+  #ltv-design .ltv-probe-track { height:3px; background:var(--lt-line); border-radius:2px; overflow:hidden; }
+  #ltv-design #ltv-probe-fill { display:block; height:100%; background:var(--lt-accent); width:0; }
+  #ltv-design .ltv-source-list { min-height:280px; }
+  #ltv-design .ltv-source-grid { display:grid; grid-template-columns:22px minmax(130px,1fr) 68px 90px 72px 116px; gap:10px; align-items:center; }
+  #ltv-design .ltv-source-tablehead { min-height:34px; font-size:11px; color:var(--lt-sub); padding:0 10px; border-bottom:1px solid var(--lt-line); }
+  #ltv-design .ltv-source-tablehead button { border:0; background:transparent; padding:0; min-height:24px; font-size:11px; justify-content:flex-start; color:var(--lt-sub); }
+  #ltv-design .ltv-source-entry { min-height:74px; padding:10px; border-bottom:1px solid var(--lt-line); }
+  #ltv-design .ltv-source-entry[data-selected="true"] { background:color-mix(in srgb,var(--lt-soft) 48%,var(--lt-bg)); }
+  #ltv-design .ltv-source-entry:hover { background:var(--lt-hover); }
+  #ltv-design .ltv-source-entry[data-selected="true"]:hover { background:color-mix(in srgb,var(--lt-soft) 48%,var(--lt-bg)); }
+  #ltv-design .ltv-source-check { display:flex; align-items:center; justify-content:center; min-height:32px; }
+  #ltv-design .ltv-source-info { min-width:0; }
+  #ltv-design .ltv-source-info h3 { font-size:13px; font-weight:550; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #ltv-design .ltv-source-info p { color:var(--lt-sub); font-size:11px; margin-top:3px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #ltv-design .ltv-source-info .ltv-installed { color:var(--lt-ok); font-size:11px; margin-left:5px; }
+  #ltv-design .ltv-source-kind { font-size:11px; color:var(--lt-sub); }
+  #ltv-design .ltv-source-health { display:flex; align-items:center; gap:5px; min-width:0; font-size:12px; white-space:nowrap; }
+  #ltv-design .ltv-source-health svg { width:13px; height:13px; }
+  #ltv-design .ltv-source-health[data-health="ok"] { color:var(--lt-ok); }
+  #ltv-design .ltv-source-health[data-health="timeout"] { color:var(--lt-bad); }
+  #ltv-design .ltv-source-health[data-health="partial"] { color:var(--lt-warn); }
+  #ltv-design .ltv-source-health[data-health="unsupported"],#ltv-design .ltv-source-health[data-health="pending"] { color:var(--lt-sub); }
+  #ltv-design .ltv-source-latency { white-space:nowrap; font-size:12px; font-variant-numeric:tabular-nums; }
+  #ltv-design .ltv-source-entry-actions { display:flex; justify-content:flex-end; gap:5px; }
+  #ltv-design .ltv-source-entry-actions button { padding:4px 7px; min-height:28px; font-size:11px; min-width:48px; }
+  #ltv-design .ltv-source-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; min-height:28px; font-size:11px; color:var(--lt-sub); }
+  #ltv-design .ltv-source-foot button { min-height:26px; padding:3px 6px; font-size:11px; }
+  #ltv-design .ltv-switch { appearance:none; width:34px; height:21px; flex-shrink:0; border:1px solid var(--lt-line); border-radius:12px; background:var(--lt-side); position:relative; }
+  #ltv-design .ltv-switch::before { content:""; display:block; width:15px; height:15px; margin:2px; border-radius:50%; background:var(--lt-sub); }
+  #ltv-design .ltv-switch:checked { background:var(--lt-accent); border-color:var(--lt-accent); }
+  #ltv-design .ltv-switch:checked::before { background:var(--lt-onaccent); transform:translateX(12px); }
+  #ltv-design .ltv-theme-tool { position:absolute; right:104px; min-height:26px; padding:2px 8px; border-radius:20px; background:transparent; border-color:transparent; font-size:11px; }
+  #ltv-design .ltv-theme-tool svg { width:13px; height:13px; }
+  #ltv-design .ltv-window[data-glass="false"] { --lt-glass:var(--lt-panel); --lt-glass-line:var(--lt-line); }
+  #ltv-design .ltv-window[data-glass="false"] :is(.ltv-titlebar,.ltv-toolbar,.ltv-sidebar,.ltv-bulkbar) { backdrop-filter:none; -webkit-backdrop-filter:none; }
+  #ltv-design .ltv-window[data-contrast="true"] { --lt-text:light-dark(#101521,#ffffff); --lt-sub:light-dark(#323d51,#d1daeb); --lt-line:light-dark(#637085,#8695b0); }
+  #ltv-design .ltv-update-sources { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  #ltv-design .ltv-update-sources button { border-radius:18px; padding:6px 12px; font-size:12px; }
+  #ltv-design .ltv-update-sources button[aria-pressed="true"] { background:var(--lt-soft); color:var(--lt-accent); border-color:transparent; }
+  #ltv-design .ltv-update-card { padding:20px; border:1px solid var(--lt-line); border-radius:var(--lt-radius); background:var(--lt-panel); }
+  #ltv-design .ltv-update-versions { display:grid; grid-template-columns:1fr 1fr; gap:20px; border-bottom:1px solid var(--lt-line); padding-bottom:16px; margin-bottom:16px; }
+  #ltv-design .ltv-update-versions p { font-size:11px; color:var(--lt-sub); }
+  #ltv-design .ltv-update-versions strong { display:block; font-size:22px; font-weight:600; margin-top:4px; font-variant-numeric:tabular-nums; }
+  #ltv-design .ltv-update-versions span { color:var(--lt-sub); font-size:11px; }
+  #ltv-design .ltv-update-status { display:flex; gap:12px; align-items:flex-start; min-height:76px; }
+  #ltv-design .ltv-update-status > svg { width:22px; height:22px; color:var(--lt-accent); margin-top:2px; }
+  #ltv-design .ltv-update-status p { color:var(--lt-sub); font-size:12px; margin-top:4px; max-width:520px; }
+  #ltv-design .ltv-update-status[data-error="true"] > svg { color:var(--lt-bad); }
+  #ltv-design .ltv-update-actions { display:flex; align-items:center; flex-wrap:wrap; gap:8px; min-height:36px; }
+  #ltv-design .ltv-update-progress { height:5px; border-radius:3px; overflow:hidden; background:var(--lt-line); margin:12px 0; }
+  #ltv-design .ltv-update-progress span { display:block; background:var(--lt-accent); height:100%; }
+  #ltv-design .ltv-update-copy { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:12px; min-height:20px; font-size:11px; color:var(--lt-sub); font-variant-numeric:tabular-nums; }
+  #ltv-design .ltv-update-notes { padding:16px 0; border-bottom:1px solid var(--lt-line); min-height:124px; }
+  #ltv-design .ltv-update-notes p { font-size:12px; color:var(--lt-sub); margin:6px 0; }
+  #ltv-design .ltv-update-link { display:inline-flex; align-items:center; gap:5px; font-size:12px; color:var(--lt-accent); text-decoration:underline; text-underline-offset:3px; }
+  #ltv-design .ltv-update-note { font-size:11px; color:var(--lt-sub); margin-top:14px; }
+  #ltv-design .ltv-update-card button { white-space:normal; text-align:center; }
+  #ltv-design .ltv-window { position:relative; }
+  #ltv-design .ltv-settings-subhead { margin:24px 0 4px; }
+  #ltv-design .ltv-path-row { padding:16px 0; border-bottom:1px solid var(--lt-line); }
+  #ltv-design .ltv-path-row > p { font-size:12px; color:var(--lt-sub); margin:4px 0 10px; }
+  #ltv-design .ltv-path-controls { display:flex; align-items:center; gap:8px; }
+  #ltv-design .ltv-path-display { min-width:0; flex:1; display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--lt-line); border-radius:8px; background:var(--lt-panel); }
+  #ltv-design .ltv-path-display span { font-size:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; user-select:text; }
+  #ltv-design .ltv-path-controls button { flex-shrink:0; font-size:12px; }
+  #ltv-design .ltv-cache-limits { display:flex; gap:6px; flex-wrap:wrap; }
+  #ltv-design .ltv-cache-limits button[aria-pressed="true"] { color:var(--lt-accent); background:var(--lt-soft); border-color:var(--lt-accent); }
+  #ltv-design .ltv-sheet-scrim { position:absolute; inset:0; z-index:100; background:rgb(10 15 25 / .28); display:flex; align-items:center; justify-content:center; padding:18px; }
+  #ltv-design .ltv-sheet { width:min(460px,100%); max-height:calc(100% - 24px); overflow:auto; padding:24px; background:var(--lt-panel); border:1px solid var(--lt-line); border-radius:18px; box-shadow:0 20px 60px var(--lt-shadow); }
+  #ltv-design .ltv-sheet h2 { margin-bottom:8px; }
+  #ltv-design .ltv-sheet p { color:var(--lt-sub); font-size:12px; margin:8px 0; }
+  #ltv-design .ltv-sheet label.ltv-checkbox-label { margin:14px 0 4px; white-space:normal; font-size:12px; }
+  #ltv-design .ltv-folder-presets { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0; }
+  #ltv-design .ltv-folder-presets button { font-size:12px; }
+  #ltv-design .ltv-sheet-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:20px; }
+  #ltv-design .ltv-path-error { min-height:36px; margin-top:12px; font-size:12px; color:var(--lt-bad); }
+  #ltv-design .ltv-sheet-note { font-size:11px!important; }
+  @container ltvcontent (max-width:400px) {
+    #ltv-design .ltv-update-card { padding:14px; }
+    #ltv-design .ltv-update-versions { gap:12px; }
+    #ltv-design .ltv-update-versions strong { font-size:18px; }
+    #ltv-design .ltv-update-status { min-height:120px; }
+    #ltv-design .ltv-update-actions { min-height:80px; align-content:center; }
+    #ltv-design .ltv-update-actions button { width:100%; }
+  }
+  @media(max-width:640px) { #ltv-design .ltv-theme-tool { display:none; } }
+  @media(prefers-reduced-transparency:reduce) {
+    #ltv-design .ltv-window { --lt-glass:var(--lt-panel); --lt-glass-line:var(--lt-line); }
+    #ltv-design .ltv-window :is(.ltv-titlebar,.ltv-toolbar,.ltv-sidebar,.ltv-bulkbar) { backdrop-filter:none; -webkit-backdrop-filter:none; }
+  }
+  @media(prefers-contrast:more) {
+    #ltv-design .ltv-window { --lt-text:light-dark(#101521,#ffffff); --lt-sub:light-dark(#323d51,#d1daeb); --lt-line:light-dark(#637085,#8695b0); --lt-glass:var(--lt-panel); }
+  }
+  @container ltvcontent (max-width:640px) {
+    #ltv-design .ltv-source-grid { grid-template-columns:22px minmax(0,1fr) 112px; gap:5px 10px; }
+    #ltv-design .ltv-source-tablehead { display:none; }
+    #ltv-design .ltv-source-entry { min-height:94px; }
+    #ltv-design .ltv-source-check { grid-column:1; grid-row:1 / span 2; }
+    #ltv-design .ltv-source-info { grid-column:2; grid-row:1; }
+    #ltv-design .ltv-source-kind { display:none; }
+    #ltv-design .ltv-source-health { grid-column:2; grid-row:2; }
+    #ltv-design .ltv-source-latency { grid-column:3; grid-row:1; text-align:right; }
+    #ltv-design .ltv-source-entry-actions { grid-column:3; grid-row:2; }
+    #ltv-design .ltv-bulk-main { flex-wrap:wrap; gap:8px; }
+    #ltv-design .ltv-bulk-actions { margin-left:auto; }
+    #ltv-design .ltv-source-controls { gap:8px; }
+  }
+  @container ltvcontent (max-width:400px) {
+    #ltv-design .ltv-source-searchbar { flex-wrap:wrap; }
+    #ltv-design .ltv-source-searchbar > .ltv-select { flex-basis:100%; }
+    #ltv-design .ltv-source-searchbar > .ltv-select > button { width:100%; justify-content:space-between; }
+    #ltv-design .ltv-source-grid { grid-template-columns:20px minmax(0,1fr); }
+    #ltv-design .ltv-source-entry { min-height:136px; }
+    #ltv-design .ltv-source-check { grid-row:1 / span 3; }
+    #ltv-design .ltv-source-info { grid-column:2; }
+    #ltv-design .ltv-source-health { grid-column:2; }
+    #ltv-design .ltv-source-latency { grid-column:2; grid-row:3; text-align:left; }
+    #ltv-design .ltv-source-latency::before { content:"响应 "; color:var(--lt-sub); }
+    #ltv-design .ltv-source-entry-actions { grid-column:2; grid-row:4; justify-content:flex-start; }
+    #ltv-design .ltv-bulk-actions { width:100%; margin:0; flex-wrap:wrap; }
+    #ltv-design .ltv-bulk-actions button { flex:1; padding:5px 6px; font-size:11px; }
+    #ltv-design .ltv-source-filters { flex-wrap:wrap; }
+    #ltv-design .ltv-source-foot { flex-wrap:wrap; }
+    #ltv-design .ltv-glass-tag { display:none; }
+  }
+  @media(max-width:860px) {
+    #ltv-design { --lt-sidebar:140px; }
+    #ltv-design .ltv-content { padding:22px; }
+    #ltv-design .ltv-source { grid-template-columns:minmax(0,1fr) 105px; gap:6px; }
+    #ltv-design .ltv-source .ltv-fixed-status { grid-column:1; }
+    #ltv-design .ltv-source-actions { grid-column:2; grid-row:1 / span 2; }
+    #ltv-design .ltv-live-layout { grid-template-columns:1fr; }
+    #ltv-design .ltv-video { min-height:190px; }
+    #ltv-design .ltv-live-channels { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }
+    #ltv-design .ltv-cover { height:142px; }
+    #ltv-design .ltv-cover span { font-size:19px; }
+  }
+  @media(max-width:640px) {
+    #ltv-design .ltv-body { grid-template-columns:64px minmax(0,1fr); height:1100px; }
+    #ltv-design .ltv-sidebar { padding:18px 6px; }
+    #ltv-design .ltv-sidebar .ltv-nav { padding:10px 6px; justify-content:center; }
+    #ltv-design .ltv-sidebar .ltv-nav span,#ltv-design .ltv-section-label,#ltv-design .ltv-version,#ltv-design .ltv-crumb,#ltv-design .ltv-local,#ltv-design .ltv-status-right { display:none; }
+    #ltv-design .ltv-content { padding:18px 14px; }
+    #ltv-design .ltv-content > section { min-height:100%; }
+    #ltv-design .ltv-toolbar { padding:9px 8px; gap:5px; }
+    #ltv-design .ltv-backtools { gap:0; }
+    #ltv-design .ltv-backtools button { width:26px; }
+    #ltv-design .ltv-modes button { padding:3px 6px; gap:4px; }
+    #ltv-design .ltv-modes button svg { display:none; }
+    #ltv-design .ltv-posters { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    #ltv-design .ltv-feature { grid-template-columns:1fr; padding:16px; }
+    #ltv-design .ltv-feature button { width:max-content; }
+    #ltv-design .ltv-pagehead { flex-wrap:wrap; }
+    #ltv-design .ltv-source { grid-template-columns:minmax(0,1fr); padding:16px 0; }
+    #ltv-design .ltv-source-actions { grid-column:1; grid-row:auto; justify-content:flex-start; }
+    #ltv-design .ltv-tabs { width:100%; flex-wrap:wrap; }
+    #ltv-design .ltv-tabs button { flex:1; padding:5px; font-size:12px; }
+    #ltv-design .ltv-theme-options { grid-template-columns:1fr; }
+    #ltv-design .ltv-theme-choice { flex-direction:row!important; justify-content:flex-start; }
+    #ltv-design .ltv-theme-sample { width:90px; height:60px; }
+    #ltv-design .ltv-history-row { flex-wrap:wrap; gap:10px; }
+    #ltv-design .ltv-thumb { width:62px; height:56px; }
+    #ltv-design .ltv-history-copy { flex-basis:100px; }
+    #ltv-design .ltv-settings-row { flex-wrap:wrap; gap:12px; }
+    #ltv-design .ltv-live-channels { grid-template-columns:1fr; }
+    #ltv-design .ltv-detail { grid-template-columns:1fr; }
+    #ltv-design .ltv-detail > .ltv-cover { width:140px; }
+    #ltv-design .ltv-episodes { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    #ltv-design h1 { font-size:22px; }
+    #ltv-design .ltv-original-hero { margin-top:30px; }
+    #ltv-design .ltv-original-mark { flex-wrap:wrap; }
+    #ltv-design .ltv-splash { min-height:700px; }
+  }
+  @media(pointer:coarse) {
+    #ltv-design button { min-height:44px; }
+    #ltv-design input.ltv-text { font-size:16px; }
+  }
+  @media(prefers-reduced-motion:reduce) { #ltv-design * { transition:none!important; animation:none!important; } }
+</style>
+<script>
+(() => {
+  function initializeLibreTVDesign() {
+  const root=document.getElementById('ltv-design');
+  if(!root || root.dataset.enhanced==='true')return;
+  const content=root.querySelector('#ltv-content');
+  const win=root.querySelector('.ltv-window');
+  if(!content || !win)return;
+  const labels={discover:'发现',live:'直播',history:'历史',theme:'主题',settings:'设置',detail:'影片详情',watch:'播放',splash:'正在启动',original:'原版主页'};
+  let saved;
+  try { saved=window.openai?.widgetState?.privateContent; } catch (_) { saved=undefined; }
+  if(saved?.schemaVersion!==2)saved=undefined;
+  const state={mode:'desktop',page:'settings',tab:'sources',theme:'light',glass:true,contrast:false,rememberWindow:true,origin:'全部范围',sourceView:'found',sourceType:'all',onlyHealthy:false,sourceSort:'default',query:'',category:'全部',sourceQuery:'',movie:'远行',channel:'公共频道示例',...saved};
+  if(saved?.updatesDesignVersion!==1)Object.assign(state,{mode:'desktop',page:'settings',tab:'updates'});
+  const updates={phase:'idle',installed:'2.21.2',latest:'2.22.0',backup:null,source:saved?.updatePreferences?.source==='website'?'website':'github',autoCheck:!!saved?.updatePreferences?.autoCheck,progress:0,checked:false,scenario:'normal',failedAt:null,token:0,timer:null};
+  const storage={downloadDir:'~/Downloads/LibreTV',cacheDir:'~/Library/Caches/LibreTV/Media',askEachTime:false,limitGB:10,usedMB:2400,...saved?.storagePreferences};
+  let sheet=null,sheetOpener=null,storageToken=0,storageTimer=null,storageScenario='normal';
+  if(saved?.storageDesignVersion!==1)Object.assign(state,{mode:'desktop',page:'settings',tab:'desktop'});
+  if(!['desktop','original'].includes(state.mode))state.mode='desktop';
+  if(!Object.keys(labels).includes(state.page))state.page='discover';
+  const sources=[
+    {id:1,name:'社区点播 · 公开接口',kind:'vod',type:'Apple CMS · JSON',host:'vod.example.invalid',provider:'GitHub',compat:true,latency:268,outcome:'ok'},
+    {id:2,name:'公共直播 · 频道列表',kind:'live',type:'M3U · XMLTV',host:'live.example.invalid',provider:'全球网页',compat:true,latency:540,outcome:'ok'},
+    {id:3,name:'影像资料 · 点播接口',kind:'vod',type:'Apple CMS · JSON',host:'archive.example.invalid',provider:'GitHub',compat:true,latency:184,outcome:'ok'},
+    {id:4,name:'TVBOX · Spider 配置',kind:'subscription',type:'Spider · 引擎不兼容',host:'spider.example.invalid',provider:'GitHub',compat:false,latency:null,outcome:'unsupported'},
+    {id:5,name:'自然频道 · 直播列表',kind:'live',type:'M3U · HLS',host:'nature.example.invalid',provider:'全球网页',compat:true,latency:390,outcome:'partial'},
+    {id:6,name:'社区点播 · 镜像接口',kind:'vod',type:'Apple CMS · JSON',host:'mirror.example.invalid',provider:'GitHub',compat:true,latency:null,outcome:'timeout'},
+    {id:7,name:'公开源 · 混合订阅',kind:'subscription',type:'LibreTV SourceList',host:'list.example.invalid',provider:'GitHub',compat:true,latency:750,outcome:'ok'},
+    {id:8,name:'文化纪实 · 直播列表',kind:'live',type:'M3U · XMLTV',host:'culture.example.invalid',provider:'全球网页',compat:true,latency:312,outcome:'ok'}
+  ];
+  const validId=id=>sources.some(x=>x.id===id);
+  const added=new Set((saved?.addedIds||[1,2]).filter(validId));
+  const selected=new Set((saved?.selectedIds||[]).filter(validId));
+  const probes=new Map([[1,{state:'ok',latency:268}],[2,{state:'ok',latency:540}]]);
+  if(Array.isArray(saved?.probes))saved.probes.forEach(([id,p])=>{if(validId(id)&&['ok','partial','timeout','cancelled'].includes(p?.state))probes.set(id,p);});
+  const job={token:0,running:false,total:0,done:0,passed:0,failed:0,active:0,queue:[],timers:new Set(),previous:new Map(),healthyAtStart:new Set(),cancelled:false};
+  let undoIds=[];
+  let history=[{mode:state.mode,page:state.page,tab:state.tab}],historyIndex=0;
+  const modeHistory={desktop:{items:[{mode:'desktop',page:'discover',tab:'desktop'}],index:0,scroll:0},original:{items:[{mode:'original',page:'original',tab:'original'}],index:0,scroll:0}};
+  let searchExecuted=false,filmQuery='';
+  const icon=n=>`<i data-lucide="${n}" aria-hidden="true"></i>`;
+  const esc=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+  const btn=(text,attrs='',cls='')=>`<button class="cursor-interaction ${cls}" ${/\btype=/.test(attrs)?'':'type="button"'} ${attrs}>${text}</button>`;
+  function persist(){try {const save=window.openai?.setWidgetState;if(typeof save==='function'){const result=save.call(window.openai,{modelContent:{updatePhase:updates.phase,mode:state.mode,page:state.page,settings:state.tab,theme:state.theme,glass:state.glass,selectedSources:selected.size,addedSources:added.size},privateContent:{schemaVersion:2,storageDesignVersion:1,storagePreferences:{downloadDir:storage.downloadDir,cacheDir:storage.cacheDir,askEachTime:storage.askEachTime,limitGB:storage.limitGB,usedMB:storage.usedMB},updatesDesignVersion:1,updatePreferences:{source:updates.source,autoCheck:updates.autoCheck},mode:state.mode,page:state.page,tab:state.tab,theme:state.theme,glass:state.glass,contrast:state.contrast,rememberWindow:state.rememberWindow,origin:state.origin,sourceView:state.sourceView,sourceType:state.sourceType,onlyHealthy:state.onlyHealthy,addedIds:[...added],selectedIds:[...selected],probes:[...probes].filter(([,p])=>['ok','partial','timeout','cancelled'].includes(p.state))}});result?.catch?.(()=>{});}}catch(_){}}
+  function renderIcons(){try {if(typeof globalThis.lucide?.createIcons==='function')globalThis.lucide.createIcons({attrs:{width:16,height:16}});}catch(_){}}
+  function message(text){const target=root.querySelector('#ltv-message');target.textContent=text;if(undoIds.length){const undo=document.createElement('button');undo.textContent='撤销移除';undo.className='ltv-quiet ltv-undo cursor-interaction';undo.dataset.action='undo-remove';target.append(' ',undo);}}
+  function navigate(page,extra={}){Object.assign(state,{page},extra);history=history.slice(0,historyIndex+1);history.push({mode:state.mode,page:state.page,tab:state.tab});historyIndex++;render();persist();}
+  function switchMode(mode){if(mode===state.mode)return;modeHistory[state.mode]={items:history,index:historyIndex,scroll:content.scrollTop};const next=modeHistory[mode];history=next.items;historyIndex=next.index;Object.assign(state,history[historyIndex]);render();content.scrollTop=next.scroll;persist();}
+  function field(id,placeholder,value='',extra=''){return `<div class="ltv-search">${icon('search')}<input class="ltv-text" id="${id}" aria-label="${placeholder}" placeholder="${placeholder}" value="${esc(value)}" ${extra}>${btn(icon('x'),`data-clear="${id}" aria-label="清空${placeholder}" ${value?'':'disabled'}`,'ltv-clear')} </div>`;}
+  function head(title,sub='',action=''){return `<div class="ltv-pagehead"><div><h1>${title}</h1>${sub?`<p>${sub}</p>`:''}</div>${action}</div>`;}
+  function films(){const list=['远行','山海之间','城市漫游','海岸线'].filter(x=>!searchExecuted||!filmQuery||x.includes(filmQuery));if(!list.length)return `<div class="ltv-empty">没有匹配的示例影片<br><span class="ltv-small">试试“远行”，或清空搜索条件</span></div>`;return `<div class="ltv-posters">${list.map((t,i)=>btn(`<div class="ltv-cover"><span>${t}</span></div><h3>${t}</h3><span class="ltv-small">${['纪录片 · 旅途','电影 · 自然','纪录片 · 城市','电影 · 生活'][i]} · 示例</span>`,`data-film="${t}"`,'ltv-film')).join('')}</div>`;}
+  function sourceDropdown(kind,label,options){return `<div class="ltv-select">${btn(`${esc(label)}${icon('chevron-down')}`,`data-menu-toggle="${kind}" aria-haspopup="dialog" aria-controls="ltv-menu-${kind}" aria-expanded="false"`)}<div class="ltv-select-menu" id="ltv-menu-${kind}" data-menu-panel="${kind}" role="dialog" aria-label="${kind==='origin'?'搜索范围':'数据源类型'}" hidden>${field('ltv-option-'+kind,'筛选选项')}${options.map(([value,text])=>btn(esc(text),`data-menu-kind="${kind}" data-menu-value="${esc(value)}"`,'ltv-select-option')).join('')}${btn('清除选择',`data-menu-kind="${kind}" data-menu-value="${kind==='origin'?'全部范围':'all'}"`,'ltv-select-option ltv-quiet')}</div></div>`;}
+  function filterMenu(){return sourceDropdown('origin',state.origin,[['全部范围','全部范围'],['GitHub','GitHub'],['全球网页','全球网页'],['自填地址','粘贴接口 / 订阅地址']]);}
+  function typeMenu(){return sourceDropdown('type',({all:'全部类型',vod:'点播接口',live:'直播列表',subscription:'订阅配置'}[state.sourceType]||'全部类型'),[['all','全部类型'],['vod','点播接口'],['live','直播列表'],['subscription','订阅配置']]);}
+  function settings(){const tabs=`<div class="ltv-tabs" role="group" aria-label="设置分类">${[['original','原版设置'],['desktop','桌面版设置'],['sources','找源'],['updates','更新']].map(([id,t])=>btn(t,`data-tab="${id}" aria-pressed="${state.tab===id}"`)).join('')}</div>`;
+    let body='';
+    if(state.tab==='sources'){
+      body=sourceWorkbench();
+    }else if(state.tab==='updates'){
+      body=updatePage();
+    }else if(state.tab==='original'){
+      body=`<div class="ltv-settings-row"><div><h3>LibreTV 原版设置</h3><p>保留官方设置页面与原有功能</p></div>${btn('打开原版设置'+icon('arrow-up-right'),'data-action="open-original-settings"')}</div><div class="ltv-settings-row"><div><h3>原版中的数据源</h3><p>与“找源”使用同一份数据</p></div>${btn('管理已添加源','data-action="manage-added"')}</div><div class="ltv-settings-row"><div><h3>播放、过滤、下载与数据</h3><p>由当前内置的 LibreTV 版本提供</p></div>${btn('查看','data-action="open-original-settings"','ltv-quiet')}</div><p class="ltv-note">官方设置内容由实际页面提供；此处为桌面入口设计。</p>`;
+    }else{
+      body=desktopSettings();
+    }
+    return head(state.tab==='sources'?'找源':state.tab==='updates'?'更新':state.tab==='desktop'?'桌面版设置':'设置',state.tab==='sources'?'发现、检测、添加，在这里一次完成。':state.tab==='updates'?'查看官方版本，按需更新本机 LibreTV 服务。':state.tab==='desktop'?'管理保存位置、媒体缓存与窗口偏好。':'原版功能与桌面偏好各有归属',state.tab==='sources'?'<span class="ltv-glass-tag">'+icon('refresh-cw')+'与原版共用</span>':state.tab==='updates'?'<span class="ltv-glass-tag">'+icon('hard-drive')+'本地自用</span>':'')+tabs+body;
+  }
+  function pathRow(kind,title,description){const path=kind==='download'?storage.downloadDir:storage.cacheDir;return `<div class="ltv-path-row"><h3>${title}</h3><p>${description}</p><div class="ltv-path-controls"><div class="ltv-path-display">${icon('folder')}<span data-tooltip="${esc(path)}">${esc(path)}</span></div>${btn('更改…',`data-path-edit="${kind}"`)}${btn(icon('folder-open'),`data-path-reveal="${kind}" aria-label="在访达中打开${title}" data-tooltip="在访达中打开"`,'ltv-icon')}${btn('默认',`data-path-reset="${kind}" data-tooltip="恢复默认位置"`,'ltv-quiet')}</div></div>`;}
+  function desktopSettings(){return `<h2 class="ltv-settings-subhead" style="margin-top:0">下载与缓存</h2>${pathRow('download','下载位置','保存导出的影片文件；更改位置用于新下载任务。')}<div class="ltv-settings-row"><div><h3>每次下载询问保存位置</h3><p>开启后，下载时选择保存的文件夹</p></div><input class="ltv-switch" type="checkbox" id="ltv-ask-download" aria-label="每次下载询问保存位置" ${storage.askEachTime?'checked':''}></div>${pathRow('cache','播放缓存位置','桌面版管理的临时媒体分片，可单独迁移。')}<div class="ltv-settings-row"><div><h3>播放缓存上限</h3><p>达到上限后清理最久未使用的临时分片</p></div><div class="ltv-cache-limits" role="group" aria-label="播放缓存容量上限">${[5,10,20].map(n=>btn(n+' GB',`data-cache-limit="${n}" aria-pressed="${storage.limitGB===n}"`)).join('')}</div></div><div class="ltv-settings-row"><div><h3>临时播放缓存</h3><p>示例占用 ${(storage.usedMB/1000).toFixed(1)} GB · 不包括已导出的影片</p></div>${btn('清理缓存','data-action="clear-media-cache" '+(storage.usedMB?'':'disabled'),'ltv-danger')}</div><div class="ltv-settings-row"><div><h3>网页数据</h3><p>观看历史、源配置与登录状态，由应用独立保存</p></div><span class="ltv-small">由系统管理</span></div><h2 class="ltv-settings-subhead">窗口与启动</h2><div class="ltv-settings-row"><div><h3>默认主页</h3><p>下次打开时使用上次选择的模式</p></div><span class="ltv-muted">记住上次选择</span></div><div class="ltv-settings-row"><div><h3>窗口与布局</h3><p>记住窗口尺寸、位置与侧栏状态</p></div><input class="ltv-switch" type="checkbox" id="ltv-remember-window" ${state.rememberWindow?'checked':''} aria-label="记住窗口位置"></div><div class="ltv-settings-row"><div><h3>启动体验</h3><p>在原窗口内显示启动状态</p></div>${btn('查看启动页','data-action="splash"')}</div><div class="ltv-settings-row"><div><h3>主题与显示</h3><p>外观、玻璃效果与对比度</p></div>${btn('调整主题','data-action="theme"')}</div><p class="ltv-update-note">目录与用量均为交互示例，尚未连接本机文件管理。</p>`;}
+  function openStorageSheet(kind,candidate){sheetOpener=document.activeElement;sheet={kind,candidate:candidate||(kind==='download'?storage.downloadDir:storage.cacheDir),migrate:true,error:'',moving:false};paintStorageSheet();(root.querySelector('#ltv-path-input')||root.querySelector('[data-action="close-storage-sheet"]'))?.focus();}
+  function paintStorageSheet(){let host=root.querySelector('#ltv-sheet-host');if(!host){host=document.createElement('div');host.id='ltv-sheet-host';win.append(host);}if(!sheet){host.innerHTML='';return;}const clearing=sheet.kind==='clear';host.innerHTML=`<div class="ltv-sheet-scrim"><section class="ltv-sheet" role="dialog" aria-modal="true" aria-labelledby="ltv-sheet-title"><h2 id="ltv-sheet-title">${clearing?'清理临时播放缓存？':sheet.kind==='download'?'选择下载位置':'更改播放缓存位置'}</h2>${clearing?`<p>可释放约 ${(storage.usedMB/1000).toFixed(1)} GB。此操作仅清理临时播放分片。</p><p>已导出的影片、观看历史与源配置不在本次清理范围内。</p>`:`<p>选择文件夹或输入目录示例。</p><div class="ltv-search">${icon('folder')}<input class="ltv-text" id="ltv-path-input" aria-label="保存目录" value="${esc(sheet.candidate)}" ${sheet.moving?'disabled':''}>${btn(icon('x'),'data-action="clear-path-input" aria-label="清空目录" '+(sheet.moving?'disabled':''),'ltv-clear')}</div><div class="ltv-folder-presets">${btn('下载文件夹','data-path-preset="downloads" '+(sheet.moving?'disabled':''))}${btn('影片文件夹','data-path-preset="movies" '+(sheet.moving?'disabled':''))}${btn('外置磁盘示例','data-path-preset="external" '+(sheet.moving?'disabled':''))}</div>${sheet.kind==='cache'?`<label class="ltv-checkbox-label"><input class="ltv-check" type="checkbox" id="ltv-migrate-cache" ${sheet.migrate?'checked':''} ${sheet.moving?'disabled':''}>将现有临时缓存迁移到新位置</label>`:''}<p class="ltv-sheet-note">正式应用中使用 macOS 文件夹选择器，并检查目录权限与可用空间。</p>`}<div class="ltv-path-error" role="${sheet.error?'alert':'status'}">${sheet.moving?'正在迁移并校验缓存…':esc(sheet.error)}</div><div class="ltv-sheet-actions">${btn(sheet.moving?'取消迁移':'取消','data-action="close-storage-sheet"')}${btn(clearing?'清理临时缓存':sheet.moving?'迁移中…':'使用此文件夹',`data-action="${clearing?'confirm-clear-cache':'save-storage-path'}" ${sheet.moving?'disabled':''}`,clearing?'ltv-danger':'ltv-primary')}</div></section></div>`;renderIcons();}
+  function closeStorageSheet(){storageToken++;clearTimeout(storageTimer);sheet=null;paintStorageSheet();if(sheetOpener?.isConnected)sheetOpener.focus();}
+  function saveStoragePath(){if(!sheet||sheet.moving||sheet.kind==='clear')return;sheet.candidate=root.querySelector('#ltv-path-input').value.trim();if(!/^(~\/|\/)/.test(sheet.candidate)||['/','~/'].includes(sheet.candidate)){sheet.error='请选择有效的文件夹，例如 ~/Movies/LibreTV。';paintStorageSheet();root.querySelector('#ltv-path-input')?.focus();return;}if(storageScenario!=='normal'){sheet.error={permission:'此目录没有写入权限，请重新选择或授权访问。',unavailable:'此磁盘当前不可用，请连接磁盘或选择其他位置。',full:'可用空间不足，无法迁移缓存，请选择其他磁盘。'}[storageScenario];paintStorageSheet();return;}const next=sheet.candidate,kind=sheet.kind;const commit=()=>{storage[kind==='download'?'downloadDir':'cacheDir']=next;closeStorageSheet();render();persist();message('演示：'+(kind==='download'?'新下载文件':'桌面播放缓存')+'将保存到所选位置');};if(kind==='cache'&&sheet.migrate&&storage.usedMB&&next!==storage.cacheDir){sheet.moving=true;paintStorageSheet();const token=++storageToken;storageTimer=setTimeout(()=>{if(token===storageToken&&sheet)commit();},1000);}else commit();}
+  function updateBusy(){return ['checking','preparing','downloading','verifying','installing','rollingback'].includes(updates.phase);}
+  function updatePage(){return `<div class="ltv-update-sources" role="group" aria-label="更新信息来源">${btn(icon('github')+'GitHub Releases',`data-update-source="github" aria-pressed="${updates.source==='github'}" ${updateBusy()?'disabled':''}`)}${btn(icon('globe')+'LibreTV 官网',`data-update-source="website" aria-pressed="${updates.source==='website'}" ${updateBusy()?'disabled':''}`)}</div><div id="ltv-update-panel">${updatePanel()}</div><section class="ltv-update-notes" aria-label="官方版本说明"><h3>官方版本说明</h3><p>参考官方 v2.22.0 发布记录：提供 Node.js standalone 更新包及 SHA256SUMS。</p><a class="ltv-update-link" href="https://github.com/LibreSpark/LibreTV/releases/tag/v2.22.0" target="_blank" rel="noopener noreferrer">查看发布记录 ${icon('arrow-up-right')}</a>　<a class="ltv-update-link" href="https://github.com/LibreSpark/LibreTV/compare/v2.21.2...v2.22.0" target="_blank" rel="noopener noreferrer">查看完整变更 ${icon('arrow-up-right')}</a></section><div class="ltv-settings-row"><div><h3>启动时检查更新</h3><p>仅提示可用版本，由你决定何时更新</p></div><input class="ltv-switch" id="ltv-auto-check-update" type="checkbox" aria-label="启动时检查更新" ${updates.autoCheck?'checked':''}></div><p class="ltv-update-note">交互演示 · 本地版本为示例；不会下载或替换本机文件。</p>`;}
+  function updatePanel(){
+    const phase=updates.phase,busy=updateBusy(),error=phase==='error'||phase==='incompatible';
+    const status={idle:['refresh-cw','检查 LibreTV 更新','读取官方发布信息，确认是否有适合本机的更新。'],checking:['loader-circle','正在检查官方版本','正在读取 GitHub 发布记录…'],available:['arrow-down-to-line','发现新版 v'+updates.latest,'先检查本地 UI 适配与运行条件，通过后再准备更新包。'],preparing:['scan-line','正在检查本地适配','检查当前 UI 适配、运行环境与更新包要求…'],downloading:['download','正在下载更新包','本机服务继续运行，下载完成后再决定何时更新。'],paused:['pause','下载已暂停','可以继续下载，也可以取消本次准备。'],verifying:['shield-check','正在校验更新包','验证更新包完整性，当前版本继续运行。'],ready:['package-check','更新包已准备好','更新会短暂中断播放；先备份配置与当前服务，完成后恢复此页面。'],installing:['loader-circle','正在更新本地服务','备份配置与当前版本 → 替换内核 → 重启并检查服务。'],done:['circle-check','本机 LibreTV 已更新','服务已恢复；你的桌面外壳、UI 设置与观看记录予以保留。'],current:['circle-check','当前已是检查到的最新版本','可以继续使用，也可以查看官方发布记录。'],error:['circle-alert',updates.failedAt==='install'?'新版启动失败，已恢复原版本':updates.failedAt==='verify'?'更新包校验未通过':'暂时无法获取更新信息',updates.failedAt==='install'?'本机服务已回退，配置与观看记录保留。可重新准备更新包。':updates.failedAt==='verify'?'已放弃此更新包，当前版本继续运行。可以重新准备更新。':'当前服务不受影响。可重试，或前往官网查看信息。'],incompatible:['shield-alert','本地适配检查未通过','此版本尚不能直接替换当前内核。保留现有版本，完成 UI 适配后再更新。'],rollingback:['rotate-ccw','正在恢复上一个版本','恢复先前的内核和配置备份，并重新启动本地服务。'],rolledback:['circle-check','已恢复上一个版本','本机服务已恢复，可以稍后再准备更新。']}[phase];
+    let actions='';
+    if(updates.source==='website'&&!busy){actions='<a class="ltv-update-link" href="https://libretv.is-an.org/" target="_blank" rel="noopener noreferrer">打开 LibreTV 官网 '+icon('arrow-up-right')+'</a>'+btn('检查 GitHub 版本','data-action="update-check"','ltv-primary');}
+    else if(phase==='idle'||phase==='current'||phase==='done'||phase==='rolledback')actions=btn('检查更新','data-action="update-check"','ltv-primary')+(updates.backup?btn('恢复上一个版本','data-action="update-rollback"','ltv-quiet'):'');
+    else if(phase==='available')actions=btn('检查并准备更新','data-action="update-prepare"','ltv-primary')+btn('稍后','data-action="update-later"','ltv-quiet');
+    else if(phase==='downloading')actions=btn('暂停下载','data-action="update-pause"')+btn('取消准备','data-action="update-cancel"','ltv-quiet');
+    else if(phase==='paused')actions=btn('继续下载','data-action="update-resume"','ltv-primary')+btn('取消准备','data-action="update-cancel"','ltv-quiet');
+    else if(phase==='ready')actions=btn('备份并更新本地服务','data-action="update-install"','ltv-primary')+btn('稍后更新','data-action="update-later"','ltv-quiet');
+    else if(phase==='error')actions=btn(updates.failedAt!=='check'?'重新准备更新':'重试检查',`data-action="${updates.failedAt!=='check'?'update-prepare':'update-check'}"`,'ltv-primary')+'<a class="ltv-update-link" href="https://libretv.is-an.org/" target="_blank" rel="noopener noreferrer">查看官网</a>';
+    else if(phase==='incompatible')actions=btn('重新检查适配','data-action="update-prepare"')+'<a class="ltv-update-link" href="https://github.com/LibreSpark/LibreTV/releases" target="_blank" rel="noopener noreferrer">查看版本说明</a>';
+    else actions=btn(phase==='checking'?'检查中…':phase==='installing'?'正在更新…':phase==='rollingback'?'正在恢复…':'正在准备…','disabled','ltv-primary');
+    const percent=['downloading','paused','verifying','ready'].includes(phase)?updates.progress:phase==='installing'?50:0;
+    return `<div class="ltv-update-card"><div class="ltv-update-versions"><div><p>本机内核版本 · 示例</p><strong>v${updates.installed}</strong><span>当前 Mac 独立运行</span></div><div><p>官方最新版本</p><strong>${updates.checked?'v'+updates.latest:'等待检查'}</strong><span>${updates.source==='website'?'官网资讯 · 更新包以发布记录为准':'LibreSpark / LibreTV'}</span></div></div><div class="ltv-update-status" data-error="${error}" role="${error?'alert':'status'}">${icon(status[0])}<div><h3>${updates.source==='website'&&!busy?'前往官网查看更新资讯':status[1]}</h3><p>${updates.source==='website'&&!busy?'官网用于查看公告与文档；本机更新包仍从官方 GitHub 发布记录获取。':status[2]}</p></div></div><div class="ltv-update-progress" role="progressbar" aria-label="本地更新进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}"><span style="width:${percent}%"></span></div><div class="ltv-update-actions">${actions}</div><div class="ltv-update-copy"><span>${updates.checked?'版本信息已检查 · 演示':'尚未在此 Mac 检查 · 演示'}</span><span>${['downloading','paused'].includes(phase)?updates.progress+'%':phase==='ready'?'等待你开始更新':busy?'处理中':updates.backup?'可回退至 v'+updates.backup:'手动更新'}</span></div></div>`;
+  }
+  function paintUpdate(){const panel=root.querySelector('#ltv-update-panel');if(panel){panel.innerHTML=updatePanel();root.querySelectorAll('[data-update-source]').forEach(b=>{b.disabled=updateBusy();b.setAttribute('aria-pressed',b.dataset.updateSource===updates.source);});renderIcons();}}
+  function updatePhase(phase){updates.phase=phase;paintUpdate();persist();}
+  function queueUpdate(callback,delay=650){const token=updates.token;clearTimeout(updates.timer);updates.timer=setTimeout(()=>{if(token===updates.token)callback();},delay);}
+  function checkUpdates(){if(updateBusy())return;updates.token++;updates.source='github';updatePhase('checking');queueUpdate(()=>{if(updates.scenario==='network-failure'){updates.scenario='normal';updates.failedAt='check';updatePhase('error');return;}updates.checked=true;updatePhase(updates.installed===updates.latest?'current':'available');});}
+  function prepareUpdate(){if(updateBusy())return;updates.token++;updatePhase('preparing');queueUpdate(()=>{if(updates.scenario==='incompatible'){updates.scenario='normal';updatePhase('incompatible');return;}updates.progress=0;updatePhase('downloading');downloadUpdate();});}
+  function downloadUpdate(){queueUpdate(()=>{if(updates.phase!=='downloading')return;updates.progress=Math.min(100,updates.progress+25);paintUpdate();if(updates.progress===100){updatePhase('verifying');queueUpdate(()=>{if(updates.scenario==='checksum-failure'){updates.scenario='normal';updates.failedAt='verify';updatePhase('error');}else updatePhase('ready');});}else downloadUpdate();},450);}
+  function installUpdate(){if(updates.phase!=='ready')return;updates.token++;updates.backup=updates.installed;updatePhase('installing');queueUpdate(()=>{if(updates.scenario==='startup-failure'){updates.scenario='normal';updates.installed=updates.backup;updates.backup=null;updates.failedAt='install';updatePhase('error');message('演示：新版服务未能启动，已自动恢复当前版本');return;}updates.installed=updates.latest;updatePhase('done');message('演示：本机 LibreTV 服务更新完成；窗口与本地 UI 保留');},1100);}
+  function rollbackUpdate(){if(updateBusy()||!updates.backup)return;updates.token++;updatePhase('rollingback');queueUpdate(()=>{updates.installed=updates.backup;updates.backup=null;updatePhase('rolledback');message('演示：已恢复上一个本地内核版本');},850);}
+  function sourceWorkbench(){return `<form class="ltv-source-searchbar" id="ltv-source-form">${filterMenu()}${field('ltv-source-search','搜索名称、接口或订阅地址',state.sourceQuery)}${btn(icon('search')+'搜索','type="submit"','ltv-primary')}</form><div class="ltv-source-controls"><div class="ltv-source-views" role="group" aria-label="数据源视图">${btn('发现结果 <span class="ltv-counter" id="ltv-found-count">'+sources.length+'</span>','data-source-view="found" aria-pressed="'+(state.sourceView==='found')+'"')}${btn('已添加 <span class="ltv-counter" id="ltv-added-count">'+added.size+'</span>','data-source-view="added" aria-pressed="'+(state.sourceView==='added')+'"')}</div><div class="ltv-source-filters">${typeMenu()}<label class="ltv-checkbox-label"><input class="ltv-check" type="checkbox" id="ltv-only-healthy" ${state.onlyHealthy?'checked':''}>只看可用</label>${btn('清除筛选','data-action="clear-source-filters"','ltv-quiet')}</div></div><div class="ltv-bulkbar" aria-label="数据源批量操作"><div class="ltv-bulk-main"><div class="ltv-bulk-selection"><label class="ltv-source-check"><input class="ltv-check" type="checkbox" id="ltv-select-all" aria-label="全选当前筛选结果"></label><span id="ltv-selected-count">已选 0 项</span>${btn('选中可用','data-action="select-healthy"','ltv-quiet')}</div><div class="ltv-bulk-actions">${btn(icon('gauge')+'测速所选','data-action="batch-probe" disabled')}${btn('添加 <span id="ltv-add-count">0</span>','data-action="batch-add" disabled data-tooltip="只添加测速通过的源，自动跳过重复项"','ltv-primary')}${btn('移除 <span id="ltv-remove-count">0</span>','data-action="batch-remove" disabled','ltv-danger')}</div></div><div class="ltv-probe-summary"><span id="ltv-probe-copy">先勾选并测速，通过后可一键添加</span>${btn('全部测速','data-action="probe-all"','ltv-cancel-probe ltv-quiet')}</div><div class="ltv-probe-track" role="progressbar" aria-label="批量测速进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="ltv-probe-fill"></span></div></div><div class="ltv-source-list" id="ltv-source-list" role="table" aria-label="数据源搜索结果">${sourceRows()}</div><div class="ltv-source-foot"><span id="ltv-source-summary"></span><span>示例数据 · 未连接真实搜索服务</span></div>`;}
+  function sourceProbe(x){return !x.compat?{state:'unsupported',latency:null}:(probes.get(x.id)||{state:'pending',latency:null});}
+  function visibleSources(view=state.sourceView){const q=state.sourceQuery.trim().toLowerCase();let list=sources.filter(x=>(view==='found'||added.has(x.id))&&(state.sourceType==='all'||x.kind===state.sourceType)&&(!['GitHub','全球网页'].includes(state.origin)||x.provider===state.origin)&&(!state.onlyHealthy||(job.running?job.healthyAtStart.has(x.id):sourceProbe(x).state==='ok'))&&(!q||(x.name+x.type+x.host+x.provider).toLowerCase().includes(q)));if(state.sourceSort==='latency')list=list.slice().sort((a,b)=>(sourceProbe(a).latency??Infinity)-(sourceProbe(b).latency??Infinity)||a.id-b.id);return list;}
+  function canAdd(x){return x.compat&&!added.has(x.id)&&sourceProbe(x).state==='ok';}
+  function healthMarkup(x){const p=sourceProbe(x);const text={pending:'待检测',queued:'排队中',running:'检测中',ok:x.kind==='subscription'?'可导入':'可播放',partial:'仅接口可用',timeout:'请求超时',unsupported:'不兼容',cancelled:'已取消'}[p.state]||'待检测';const symbol={ok:'circle-check',timeout:'circle-x',partial:'triangle-alert',unsupported:'circle-minus',running:'loader-circle',queued:'clock-3',cancelled:'circle-pause',pending:'circle-dashed'}[p.state]||'circle-dashed';return icon(symbol)+'<span>'+text+'</span>';}
+  function sourceRows(){const list=visibleSources();if(!list.length)return `<div class="ltv-empty"><h3>${state.sourceView==='added'?'还没有符合条件的已添加源':'没有找到匹配的数据源'}</h3><p class="ltv-note">${state.sourceQuery||state.onlyHealthy||state.sourceType!=='all'?'试试清除筛选条件。':'先发现公开源，检测可用后即可添加。'}</p>${btn('清除筛选','data-action="clear-source-filters"')}${state.sourceView==='added'?btn('去发现源','data-source-view="found"','ltv-quiet'):''}</div>`;return `<div class="ltv-source-grid ltv-source-tablehead" role="row"><span role="columnheader"></span><span role="columnheader">名称 / 来源</span><span role="columnheader">类型</span><span role="columnheader">检测结果</span><span role="columnheader">${btn('响应 '+icon('arrow-down-up'),'data-action="sort-latency" data-tooltip="手动按响应耗时排序，测速时不自动重排"')}</span><span role="columnheader" style="text-align:right">操作</span></div>`+list.map(x=>{const p=sourceProbe(x);return `<div class="ltv-source-grid ltv-source-entry" role="row" data-source-id="${x.id}" data-selected="${selected.has(x.id)}"><label class="ltv-source-check" role="cell"><input class="ltv-check" type="checkbox" data-select-source="${x.id}" aria-label="选择${esc(x.name)}" ${selected.has(x.id)?'checked':''}></label><div class="ltv-source-info" role="cell"><h3>${esc(x.name)}<span class="ltv-installed" data-installed="${x.id}">${added.has(x.id)?'已添加':''}</span></h3><p>${esc(x.provider)} · ${esc(x.host)}<span class="ltv-small"> · ${esc(x.type)}</span></p></div><span class="ltv-source-kind" role="cell">${{vod:'点播',live:'直播',subscription:'订阅'}[x.kind]}</span><span class="ltv-source-health" role="cell" data-health-id="${x.id}" data-health="${p.state}">${healthMarkup(x)}</span><span class="ltv-source-latency" role="cell" data-latency="${x.id}">${p.latency!=null?p.latency+' ms':'—'}</span><div class="ltv-source-entry-actions" role="cell">${btn('测速',`data-probe="${x.id}" ${!x.compat||job.running?'disabled':''} aria-label="测速${esc(x.name)}"`)}${btn(added.has(x.id)?'移除':'添加',`data-source-toggle="${x.id}" aria-label="${added.has(x.id)?'移除':'添加'}${esc(x.name)}" ${job.running||(!added.has(x.id)&&!canAdd(x))?'disabled':''}`,added.has(x.id)?'ltv-danger':canAdd(x)?'ltv-primary':'')}</div></div>`;}).join('');}
+  function refreshSourceResults(){const list=root.querySelector('#ltv-source-list');if(!list)return;list.innerHTML=sourceRows();updateSourceUI();renderIcons();}
+  function updateSourceUI(){if(!root.querySelector('#ltv-source-list'))return;const visible=visibleSources(),checked=visible.filter(x=>selected.has(x.id)),addable=checked.filter(canAdd),removable=checked.filter(x=>added.has(x.id));const all=root.querySelector('#ltv-select-all');all.checked=visible.length>0&&checked.length===visible.length;all.indeterminate=checked.length>0&&checked.length<visible.length;all.disabled=visible.length===0;root.querySelector('#ltv-selected-count').textContent='已选 '+checked.length+' 项';root.querySelector('#ltv-add-count').textContent=addable.length;root.querySelector('#ltv-remove-count').textContent=removable.length;root.querySelector('[data-action="batch-probe"]').disabled=job.running||!checked.some(x=>x.compat);root.querySelector('[data-action="batch-add"]').disabled=job.running||!addable.length;root.querySelector('[data-action="batch-remove"]').disabled=job.running||!removable.length;root.querySelector('[data-action="select-healthy"]').disabled=!visible.some(x=>sourceProbe(x).state==='ok');root.querySelector('#ltv-found-count').textContent=visibleSources('found').length;root.querySelector('#ltv-added-count').textContent=visibleSources('added').length;root.querySelector('#ltv-source-summary').textContent=visible.length+' 个结果 · '+visible.filter(x=>sourceProbe(x).state==='ok').length+' 个已验证可用';root.querySelectorAll('[data-source-id]').forEach(row=>{const id=Number(row.dataset.sourceId),x=sources.find(x=>x.id===id);row.dataset.selected=selected.has(id);row.querySelector('[data-select-source]').checked=selected.has(id);const p=sourceProbe(x),health=row.querySelector('[data-health-id]');health.dataset.health=p.state;health.innerHTML=healthMarkup(x);row.querySelector('[data-latency]').textContent=p.latency!=null?p.latency+' ms':'—';row.querySelector('[data-installed]').textContent=added.has(id)?'已添加':'';row.querySelector('[data-probe]').disabled=!x.compat||job.running;const toggle=row.querySelector('[data-source-toggle]');toggle.textContent=added.has(id)?'移除':'添加';toggle.className='cursor-interaction '+(added.has(id)?'ltv-danger':canAdd(x)?'ltv-primary':'');toggle.disabled=job.running||(!added.has(id)&&!canAdd(x));toggle.setAttribute('aria-label',(added.has(id)?'移除':'添加')+x.name);});const copy=root.querySelector('#ltv-probe-copy');copy.textContent=job.running?'检测中 '+job.done+' / '+job.total+' · 可用 '+job.passed+' · 异常 '+job.failed+' · 并发 3':job.total?(job.cancelled?'已停止':'检测完成')+' '+job.done+' / '+job.total+' · 可用 '+job.passed+' · 异常 '+job.failed:'先勾选并测速，通过后可一键添加';const control=root.querySelector('[data-action="probe-all"],[data-action="cancel-probe"]');control.dataset.action=job.running?'cancel-probe':'probe-all';control.textContent=job.running?'停止测速':'全部测速';control.disabled=!job.running&&!visible.some(x=>x.compat);const progress=job.total?Math.round(job.done/job.total*100):0;root.querySelector('#ltv-probe-fill').style.width=progress+'%';root.querySelector('.ltv-probe-track').setAttribute('aria-valuenow',progress);renderIcons();}
+  function startProbes(ids){
+    if(job.running)return;
+    const queue=[...new Set(ids)].filter(id=>sources.some(x=>x.id===id&&x.compat));
+    if(!queue.length){message('当前选择中没有可检测的数据源');return;}
+    job.token++;
+    job.previous=new Map(queue.map(id=>[id,probes.get(id)]));
+    job.healthyAtStart=new Set(sources.filter(x=>sourceProbe(x).state==='ok').map(x=>x.id));
+    Object.assign(job,{running:true,total:queue.length,done:0,passed:0,failed:0,active:0,queue:queue.slice(),cancelled:false});
+    queue.forEach(id=>probes.set(id,{state:'queued',latency:null}));
+    const token=job.token;
+    function pump(){
+      while(job.running&&job.active<3&&job.queue.length){
+        const id=job.queue.shift(),x=sources.find(x=>x.id===id);
+        job.active++;probes.set(id,{state:'running',latency:null});
+        const timer=setTimeout(()=>{
+          job.timers.delete(timer);
+          if(token!==job.token||!job.running)return;
+          probes.set(id,{state:x.outcome,latency:x.latency});job.active--;job.done++;
+          if(x.outcome==='ok')job.passed++;else job.failed++;
+          if(job.done===job.total){
+            job.running=false;
+            if(state.onlyHealthy){restrictSelection();refreshSourceResults();}
+            message('示例批量检测完成：'+job.passed+' 个可用，'+job.failed+' 个异常；不兼容源已跳过');persist();
+          }
+          updateSourceUI();if(job.running)pump();
+        },600+(id%3)*350);
+        job.timers.add(timer);
+      }
+      updateSourceUI();
+    }
+    pump();message('正在检测 '+queue.length+' 个示例源 · 接口检查与抽样播放 · 未发送网络请求');
+  }
+  function cancelProbes(){
+    if(!job.running)return;
+    job.token++;job.timers.forEach(clearTimeout);job.timers.clear();
+    probes.forEach((p,id)=>{if(['queued','running'].includes(p.state))probes.set(id,job.previous.get(id)||{state:'cancelled',latency:null});});
+    Object.assign(job,{running:false,active:0,queue:[],cancelled:true});
+    if(state.onlyHealthy){restrictSelection();refreshSourceResults();}
+    updateSourceUI();message('已停止测速 · 原有结果与已完成的检测结果保留');persist();
+  }
+  function addSources(ids){if(job.running)return;const target=[...new Set(ids)].map(id=>sources.find(x=>x.id===id)).filter(Boolean),ready=target.filter(canAdd),duplicate=target.filter(x=>added.has(x.id)).length;ready.forEach(x=>added.add(x.id));updateSourceUI();message('示例：已添加 '+ready.length+' 个源到原版 · 已存在 '+duplicate+' 个 · 未通过 '+(target.length-ready.length-duplicate)+' 个');persist();}
+  function removeSources(ids){if(job.running)return;undoIds=[...new Set(ids)].filter(id=>added.has(id));if(!undoIds.length)return;undoIds.forEach(id=>{added.delete(id);selected.delete(id);});refreshSourceResults();message('示例：已移除 '+undoIds.length+' 个源。');persist();}
+  function discover(){return head('发现','找一部喜欢的，安静看一会儿。')+`<form class="ltv-row" id="ltv-film-form">${field('ltv-film-search','搜索电影、剧集或动漫',filmQuery)}${btn('搜索','type="submit"','ltv-primary')}</form><div class="ltv-filterbar" role="group" aria-label="影片分类">${['全部','电影','剧集','动漫','纪录片'].map(x=>btn(x,`data-category="${x}" aria-pressed="${state.category===x}"`)).join('')}</div><div class="ltv-feature"><div><span class="ltv-small">继续观看</span><h2>远行 <span class="ltv-small">第 3 集</span></h2><p>上次看到 18:24 · 剩余 26 分钟</p></div>${btn(icon('play')+'继续播放','data-action="continue"','ltv-primary')}</div><div class="ltv-sectionhead"><h2>${searchExecuted?'搜索结果':'为你发现'}</h2><span class="ltv-small">示例内容</span></div>${films()}`;}
+  function historyPage(){return head('观看历史','接着上次的位置继续。')+field('ltv-history-search','筛选观看历史')+`<div class="ltv-sectionhead"><h2>最近观看</h2><span class="ltv-small">当前 Mac</span></div><div id="ltv-history-list">${['远行','山海之间','城市漫游'].map((x,i)=>`<div class="ltv-history-row" data-history-title="${x}"><div class="ltv-thumb">${icon('play')}</div><div class="ltv-history-copy"><h3>${x}</h3><p>${i===0?'今天':'昨天'} · ${['第 3 集 · 18:24','看到 42:16','第 1 集 · 08:30'][i]}</p><div class="ltv-meter"><b style="width:${[41,72,18][i]}%"></b></div></div>${btn('继续',`data-play="${x}"`,'ltv-quiet')}</div>`).join('')}</div>`;}
+  function themePage(){return head('主题','清晰的内容，轻盈的操作层。')+`<div class="ltv-theme-options" role="group" aria-label="外观主题">${[['system','跟随系统'],['light','浅色'],['dark','深色']].map(([id,t])=>btn(`<span class="ltv-theme-sample ${id}"></span><span>${t}</span>`,`data-theme-choice="${id}" aria-pressed="${state.theme===id}"`,'ltv-theme-choice')).join('')}</div><div class="ltv-settings-row"><div><h3>玻璃效果</h3><p>导航与工具栏使用通透材质，内容区域保持清晰</p></div><input class="ltv-switch" type="checkbox" id="ltv-glass-enabled" aria-label="启用玻璃效果" ${state.glass?'checked':''}></div><div class="ltv-settings-row"><div><h3>增强对比度</h3><p>加深文字与控件边界，同时减少透明度</p></div><input class="ltv-switch" type="checkbox" id="ltv-increase-contrast" aria-label="增强对比度" ${state.contrast?'checked':''}></div><div class="ltv-settings-row"><div><h3>减少动态效果</h3><p>遵循系统设置，保留清晰的状态反馈</p></div><span class="ltv-muted">跟随系统</span></div><div class="ltv-settings-row"><div><h3>原版页面外观</h3><p>通过官方主题能力适配，兼容后续升级</p></div>${btn('原版设置','data-action="open-original-settings"','ltv-quiet')}</div>`;}
+  function livePage(){return head('直播','选一个频道，即刻开始。')+field('ltv-channel-search','筛选频道')+`<div class="ltv-live-layout"><div class="ltv-video"><span>${icon('radio')}</span><h2 id="ltv-live-title">${esc(state.channel)}</h2><p>直播播放器区域 · 设计示意</p>${btn('播放预览','data-action="live-play"')}</div><div class="ltv-live-channels">${['公共频道示例','自然纪实示例','音乐现场示例','文化频道示例'].map(x=>btn(`<span>${x}</span>${icon('play')}`,`data-channel="${x}" aria-pressed="${state.channel===x}"`,'ltv-channel')).join('')}</div></div><div class="ltv-sectionhead"><h2>节目单</h2><span class="ltv-small">示例 EPG</span></div><p class="ltv-muted">正在播出　18:00 — 19:00　世界的另一面</p>`;}
+  function original(){return `<div class="ltv-original-mark"><span>原版布局示意 · 实际使用时嵌入官方页面</span>${btn(icon('settings-2')+'原版设置','data-action="original-panel"','ltv-quiet')}</div><div class="ltv-original-hero"><h1>LibreTV</h1><p class="ltv-muted">自由观影，畅享精彩</p><form class="ltv-row" id="ltv-film-form" style="width:100%">${field('ltv-film-search','搜索电影、剧集或动漫',filmQuery)}${btn('搜索','type="submit"','ltv-primary')}</form><div class="ltv-row">${btn('观看历史','data-action="history"','ltv-quiet')}${btn('直播','data-action="live"','ltv-quiet')}</div></div><div class="ltv-sectionhead"><h2>热门推荐</h2><span class="ltv-small">原版内容区域示意</span></div>${films()}`;}
+  function detail(){return head(esc(state.movie),'详情 · 示例资源')+`<div class="ltv-detail"><div class="ltv-cover"><span>${esc(state.movie)}</span></div><div><h2>每一段旅程，都值得慢慢看。</h2><p class="ltv-note">纪录片 · 2026 · 示例内容</p><p class="ltv-muted">影片简介使用固定行数。展开详情时由用户主动操作，不挤动封面和主要按钮。</p><div class="ltv-row" style="margin-top:22px">${btn(icon('play')+'开始播放',`data-play="${esc(state.movie)}"`,'ltv-primary')}${btn('选择来源','data-action="choose-play-source"')}</div></div></div><div class="ltv-sectionhead"><h2>选集</h2><span class="ltv-small">示例 · 共 10 集</span></div><div class="ltv-episodes">${Array.from({length:10},(_,i)=>btn('第 '+(i+1)+' 集',`data-play="${esc(state.movie)}"`)).join('')}</div>`;}
+  function watch(){return head(esc(state.movie),'播放器与剧集区域保持稳定')+`<div class="ltv-video" style="min-height:340px">${icon('play')}<h2>${esc(state.movie)}</h2><p>ArtPlayer 播放区域 · 无实际视频</p>${btn('返回影片详情','data-action="detail"')}</div><div class="ltv-sectionhead"><h2>第 3 集</h2>${btn('下一集','data-action="next-episode"','ltv-quiet')}</div>`;}
+  function splash(){return `<div class="ltv-splash"><img src="https://cdn.jsdelivr.net/gh/LibreSpark/LibreTV-portal@main/assets/icon-192.png" alt="LibreTV 官方图标"><h1>LibreTV</h1><div class="ltv-progress" role="progressbar" aria-label="正在启动本地服务"><span></span></div><div class="ltv-startup-state" role="status"><strong>正在准备观影空间</strong><span class="ltv-small">正在启动本地服务…</span></div><div class="ltv-row">${btn('模拟就绪','data-action="startup-ready"')}${btn('模拟启动失败','data-action="startup-fail"','ltv-quiet')}</div></div>`;}
+  function render(){
+    win.dataset.theme=state.theme;
+    win.dataset.glass=state.glass&&!state.contrast?'true':'false';
+    win.dataset.contrast=state.contrast?'true':'false';
+    const themeTool=root.querySelector('.ltv-theme-tool');
+    themeTool.innerHTML=icon(state.theme==='dark'?'moon':state.theme==='light'?'sun':'monitor')+'<span>'+({dark:'深色',light:'浅色',system:'跟随系统'}[state.theme]||'浅色')+'</span>';
+    const originalMode=state.mode==='original',starting=state.page==='splash';
+    root.querySelector('.ltv-sidebar').hidden=originalMode||starting;
+    root.querySelector('.ltv-body').classList.toggle('ltv-original-body',originalMode||starting);
+    root.querySelectorAll('[data-mode]').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.mode===state.mode);b.disabled=starting;});
+    root.querySelectorAll('[data-page]').forEach(b=>{b.removeAttribute('aria-current');if(b.dataset.page===state.page)b.setAttribute('aria-current','page');});
+    root.querySelector('[data-action="back"]').disabled=starting||historyIndex===0;root.querySelector('[data-action="home"]').disabled=starting;
+    root.querySelector('[data-action="forward"]').disabled=starting||historyIndex===history.length-1;
+    root.querySelector('.ltv-crumb').textContent=(originalMode?'原版 / ':'')+(labels[state.page]||'发现')+(state.page==='settings'?' / '+({sources:'找源',original:'原版设置',desktop:'桌面版设置',updates:'更新'}[state.tab]||''): '');
+    const views={discover,settings,history:historyPage,theme:themePage,live:livePage,original,detail,watch,splash};
+    content.innerHTML='<section>'+views[state.page]()+'</section>';
+    root.querySelectorAll('.ltv-nav').forEach(b=>{b.setAttribute('aria-label',labels[b.dataset.page]);b.setAttribute('data-tooltip',labels[b.dataset.page]);b.disabled=state.page==='splash';});
+    updateSourceUI();
+    renderIcons();
+  }
+  function restrictSelection(){const ids=new Set(visibleSources().map(x=>x.id));selected.forEach(id=>{if(!ids.has(id))selected.delete(id);});}
+  function closeMenus(restore=false){root.querySelectorAll('[data-menu-panel]').forEach(panel=>{if(!panel.hidden&&restore)root.querySelector('[data-menu-toggle="'+panel.dataset.menuPanel+'"]')?.focus();panel.hidden=true;});root.querySelectorAll('[data-menu-toggle]').forEach(toggle=>toggle.setAttribute('aria-expanded','false'));}
+  root.addEventListener('submit',e=>{e.preventDefault();if(e.target.id==='ltv-source-form'){refreshSourceResults();message('示例搜索：'+state.origin+' · '+visibleSources().length+' 个结果，未执行实际网络搜索');return;}searchExecuted=true;filmQuery=root.querySelector('#ltv-film-search')?.value.trim()||'';render();message('示例搜索：'+(filmQuery||'全部影片'));});
+  root.addEventListener('input',e=>{
+    const id=e.target.id;root.querySelector(`[data-clear="${id}"]`)?.toggleAttribute('disabled',!e.target.value);
+    if(id==='ltv-source-search'){state.sourceQuery=e.target.value;restrictSelection();refreshSourceResults();}
+    if(id==='ltv-film-search')filmQuery=e.target.value;
+    if(id==='ltv-history-search'){const rows=[...root.querySelectorAll('[data-history-title]')];rows.forEach(x=>x.hidden=!x.dataset.historyTitle.includes(e.target.value));let empty=root.querySelector('#ltv-history-empty');if(!empty){empty=document.createElement('p');empty.id='ltv-history-empty';empty.className='ltv-empty';empty.textContent='没有匹配的观看记录，试试清空搜索。';root.querySelector('#ltv-history-list').append(empty);}empty.hidden=rows.some(x=>!x.hidden);}
+    if(id==='ltv-channel-search'){const rows=[...root.querySelectorAll('[data-channel]')];rows.forEach(x=>x.hidden=!x.dataset.channel.includes(e.target.value));let empty=root.querySelector('#ltv-channel-empty');if(!empty){empty=document.createElement('p');empty.id='ltv-channel-empty';empty.className='ltv-empty';empty.textContent='没有匹配频道，试试清空搜索。';root.querySelector('.ltv-live-channels').append(empty);}empty.hidden=rows.some(x=>!x.hidden);}
+    if(id.startsWith('ltv-option-')){const kind=id.slice('ltv-option-'.length),q=e.target.value.toLowerCase();root.querySelectorAll('[data-menu-kind="'+kind+'"]').forEach(x=>x.hidden=!x.textContent.toLowerCase().includes(q));}
+  });
+  root.addEventListener('change',e=>{const input=e.target;if(input.id==='ltv-ask-download'){storage.askEachTime=input.checked;persist();return;}if(input.id==='ltv-migrate-cache'&&sheet){sheet.migrate=input.checked;return;}if(input.id==='ltv-auto-check-update'){updates.autoCheck=input.checked;persist();message('演示：启动检查'+(updates.autoCheck?'已开启':'已关闭')+'，更新仍由你手动开始');return;}if(input.dataset.selectSource){const id=Number(input.dataset.selectSource);if(input.checked)selected.add(id);else selected.delete(id);updateSourceUI();persist();return;}if(input.id==='ltv-select-all'){visibleSources().forEach(x=>{if(input.checked)selected.add(x.id);else selected.delete(x.id);});updateSourceUI();persist();return;}if(input.id==='ltv-only-healthy'){state.onlyHealthy=input.checked;restrictSelection();refreshSourceResults();persist();return;}if(input.id==='ltv-glass-enabled'){state.glass=input.checked;render();persist();return;}if(input.id==='ltv-increase-contrast'){state.contrast=input.checked;render();persist();return;}if(input.id==='ltv-remember-window'){state.rememberWindow=input.checked;persist();message('设计预览：窗口偏好已记住');}});
+  root.addEventListener('click',e=>{
+    if(!e.target.closest('.ltv-select'))closeMenus();
+    const b=e.target.closest('button');if(!b||b.disabled)return;
+    if(b.dataset.pathEdit){openStorageSheet(b.dataset.pathEdit);return;}
+    if(b.dataset.pathReset){const kind=b.dataset.pathReset,next=kind==='download'?'~/Downloads/LibreTV':'~/Library/Caches/LibreTV/Media';openStorageSheet(kind,next);return;}
+    if(b.dataset.pathReveal){message('演示：正式应用将在访达中打开'+(b.dataset.pathReveal==='download'?'下载':'播放缓存')+'文件夹');return;}
+    if(b.dataset.pathPreset&&sheet&&!sheet.moving){const base={downloads:'~/Downloads/LibreTV',movies:'~/Movies/LibreTV',external:'/Volumes/Media/LibreTV'}[b.dataset.pathPreset];sheet.candidate=base+(sheet.kind==='cache'?'/Cache':'');const input=root.querySelector('#ltv-path-input');input.value=sheet.candidate;input.focus();return;}
+    if(b.dataset.cacheLimit){storage.limitGB=Number(b.dataset.cacheLimit);render();persist();message('演示：缓存上限已设为 '+storage.limitGB+' GB');return;}
+    if(b.dataset.updateSource&&!updateBusy()){updates.source=b.dataset.updateSource;render();persist();return;}
+    if(b.dataset.page){navigate(b.dataset.page);return;}
+    if(b.dataset.mode){const m=b.dataset.mode;if(m===state.mode)return;const playing=state.page==='watch';switchMode(m);message('已切换到'+(m==='desktop'?'桌面版':'原版')+(playing?' · 播放已暂停，进度保留（示意）':' · 保留各模式的页面与返回历史'));return;}
+    if(b.dataset.tab){state.tab=b.dataset.tab;render();persist();return;}
+    if(b.dataset.category){state.category=b.dataset.category;render();message('已选择“'+state.category+'” · 原型仅展示分类状态');return;}
+    if(b.dataset.sourceView){state.sourceView=b.dataset.sourceView;selected.clear();render();persist();return;}
+    if(b.dataset.menuToggle){const panel=root.querySelector('[data-menu-panel="'+b.dataset.menuToggle+'"]'),opening=panel.hidden;closeMenus();panel.hidden=!opening;b.setAttribute('aria-expanded',String(opening));if(opening)panel.querySelector('input')?.focus();return;}
+    if(b.dataset.menuKind){if(b.dataset.menuKind==='origin')state.origin=b.dataset.menuValue;else state.sourceType=b.dataset.menuValue;restrictSelection();const toggleKind=b.dataset.menuKind;render();root.querySelector('[data-menu-toggle="'+toggleKind+'"]')?.focus();persist();return;}
+    if(b.dataset.themeChoice){state.theme=b.dataset.themeChoice;render();persist();message('已应用'+({system:'跟随系统',light:'浅色',dark:'深色'}[state.theme])+'外观');return;}
+    if(b.dataset.clear){const input=root.querySelector('#'+b.dataset.clear);if(!input)return;input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));input.focus();if(b.dataset.clear==='ltv-film-search'){searchExecuted=false;render();root.querySelector('#ltv-film-search')?.focus();}return;}
+    if(b.dataset.film){state.movie=b.dataset.film;navigate('detail');return;}
+    if(b.dataset.play){state.movie=b.dataset.play;navigate('watch');return;}
+    if(b.dataset.channel){state.channel=b.dataset.channel;render();return;}
+    if(b.dataset.probe){startProbes([Number(b.dataset.probe)]);return;}
+    if(b.dataset.sourceToggle){const id=Number(b.dataset.sourceToggle);if(added.has(id))removeSources([id]);else addSources([id]);return;}
+    switch(b.dataset.action){
+      case 'clear-media-cache':openStorageSheet('clear');break;
+      case 'close-storage-sheet':closeStorageSheet();break;
+      case 'clear-path-input':{const input=root.querySelector('#ltv-path-input');if(input&&!sheet?.moving){input.value='';input.focus();}break;}
+      case 'save-storage-path':saveStoragePath();break;
+      case 'confirm-clear-cache':storage.usedMB=0;closeStorageSheet();render();persist();message('演示：临时媒体缓存已清理，下载影片、历史与源配置保留');break;
+      case 'update-check':checkUpdates();break;
+      case 'update-prepare':prepareUpdate();break;
+      case 'update-pause':updates.token++;clearTimeout(updates.timer);updatePhase('paused');break;
+      case 'update-resume':updates.token++;updatePhase('downloading');downloadUpdate();break;
+      case 'update-cancel':updates.token++;clearTimeout(updates.timer);updates.progress=0;updatePhase('available');message('演示：已取消准备，当前本地服务继续运行');break;
+      case 'update-install':installUpdate();break;
+      case 'update-rollback':rollbackUpdate();break;
+      case 'update-later':message(updates.phase==='ready'?'演示：更新包已保留，稍后可回到更新页继续':'演示：已保留版本信息，稍后可再准备更新');break;
+      case 'theme-cycle':state.theme=state.theme==='light'?'dark':'light';render();persist();break;
+      case 'batch-probe':startProbes(visibleSources().filter(x=>selected.has(x.id)).map(x=>x.id));break;
+      case 'probe-all':startProbes(visibleSources().map(x=>x.id));break;
+      case 'cancel-probe':cancelProbes();break;
+      case 'batch-add':addSources(visibleSources().filter(x=>selected.has(x.id)).map(x=>x.id));break;
+      case 'batch-remove':removeSources(visibleSources().filter(x=>selected.has(x.id)).map(x=>x.id));break;
+      case 'undo-remove':{const count=undoIds.length;undoIds.forEach(id=>added.add(id));undoIds=[];refreshSourceResults();message('已恢复 '+count+' 个示例源');persist();break;}
+      case 'select-healthy':selected.clear();visibleSources().filter(x=>sourceProbe(x).state==='ok').forEach(x=>selected.add(x.id));updateSourceUI();persist();break;
+      case 'clear-source-filters':Object.assign(state,{sourceQuery:'',sourceType:'all',onlyHealthy:false,origin:'全部范围'});selected.clear();render();root.querySelector('#ltv-source-search')?.focus();persist();break;
+      case 'sort-latency':state.sourceSort=state.sourceSort==='latency'?'default':'latency';refreshSourceResults();message(state.sourceSort==='latency'?'已按响应耗时排序 · 未完成检测的源置于末尾':'已恢复默认顺序');break;
+      case 'back':if(historyIndex>0){Object.assign(state,history[--historyIndex]);render();persist();}break;
+      case 'forward':if(historyIndex<history.length-1){Object.assign(state,history[++historyIndex]);render();persist();}break;
+      case 'home':navigate(state.mode==='desktop'?'discover':'original');break;
+      case 'manage-added':navigate('settings',{tab:'sources',sourceView:'added'});break;
+      case 'theme':navigate('theme');break;
+      case 'history':navigate('history');break;
+      case 'live':navigate('live');break;
+      case 'continue':state.movie='远行';navigate('watch');break;
+      case 'detail':navigate('detail');break;
+      case 'next-episode':message('示例：已切换到第 4 集，播放器尺寸保持不变');break;
+      case 'splash':navigate('splash');break;
+      case 'startup-ready':navigate('discover',{mode:'desktop'});message('启动完成 · 同一窗口进入主页');break;
+      case 'startup-fail':{content.querySelector('.ltv-startup-state').setAttribute('role','alert');content.querySelector('.ltv-startup-state').innerHTML='<strong>本地服务未能启动</strong><span class="ltv-small">可重试，或查看详细原因</span>';const row=content.querySelector('.ltv-splash .ltv-row');row.innerHTML=btn('重新启动','data-action="splash"','ltv-primary')+btn('查看详情','data-action="service-status"','ltv-quiet');break;}
+      case 'service-status':message('设计示例：服务状态与启动日志在此展示，可复制诊断信息');break;
+      case 'open-original-settings':switchMode('original');navigate('settings',{tab:'original'});message('原版设置入口示意 · 实际页面由内置 LibreTV 提供');break;
+      case 'original-panel':navigate('settings',{mode:'original',tab:'original'});break;
+      case 'choose-play-source':message('设计：固定宽度的来源弹层，可筛选、清空并测速');break;
+      case 'live-play':message('直播播放交互示意 · 此处不连接实际频道');break;
+    }
+  });
+  root.addEventListener('keydown',e=>{if(sheet){if(e.key==='Escape'){e.preventDefault();closeStorageSheet();return;}if(e.key==='Enter'&&e.target.id==='ltv-path-input'){e.preventDefault();saveStoragePath();return;}if(e.key==='Tab'){const panel=root.querySelector('[aria-modal="true"]'),items=[...panel.querySelectorAll('button:not(:disabled),input:not(:disabled),a[href]')];if(items.length){const first=items[0],last=items[items.length-1];if(!panel.contains(document.activeElement)||(!e.shiftKey&&document.activeElement===last)||(e.shiftKey&&document.activeElement===first)){e.preventDefault();(e.shiftKey?last:first).focus();}}}return;}if(e.key==='Escape'){closeMenus(true);return;}if((e.metaKey||e.ctrlKey)&&['[',']'].includes(e.key)){e.preventDefault();root.querySelector(e.key==='['?'[data-action="back"]':'[data-action="forward"]')?.click();return;}if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){const input=root.querySelector('#ltv-source-search,#ltv-film-search,#ltv-channel-search,#ltv-history-search');if(input){e.preventDefault();input.focus();input.select();}return;}const select=e.target.closest('.ltv-select'),panel=select?.querySelector('[data-menu-panel]:not([hidden])');if(panel&&['ArrowDown','ArrowUp','Enter'].includes(e.key)){const options=[...panel.querySelectorAll('[data-menu-kind]:not([hidden])')];if(!options.length)return;e.preventDefault();const at=options.indexOf(document.activeElement);if(e.key==='Enter'){(at<0?options[0]:options[at]).click();}else options[(at+(e.key==='ArrowDown'?1:-1)+options.length)%options.length].focus();}});
+  root.addEventListener('focusout',e=>{const select=e.target.closest('.ltv-select');if(select&&e.relatedTarget&&!select.contains(e.relatedTarget))closeMenus();});
+  window.addEventListener('openai:set_globals',e=>{const s=e.detail?.globals?.widgetState?.privateContent;if(s?.schemaVersion!==2||s.storageDesignVersion!==1)return;const before=JSON.stringify([state.mode,state.page,state.theme,state.tab,state.glass]);if(['desktop','original'].includes(s.mode))state.mode=s.mode;if(Object.keys(labels).includes(s.page))state.page=s.page;if(['system','light','dark'].includes(s.theme))state.theme=s.theme;if(['original','desktop','sources','updates'].includes(s.tab))state.tab=s.tab;if(typeof s.glass==='boolean')state.glass=s.glass;if(before!==JSON.stringify([state.mode,state.page,state.theme,state.tab,state.glass]))render();});
+  render();
+  root.dataset.enhanced='true';
+  if(typeof globalThis.Tweak==='function'){try{
+    let configuredUpdateScenario='normal';
+    const options={sidebar:176,radius:12,theme:state.theme,glass:state.glass,updateScenario:'normal',folderScenario:'normal'};
+    const t=new globalThis.Tweak({container:root,onChange:()=>{
+      root.style.setProperty('--lt-sidebar',options.sidebar+'px');root.style.setProperty('--lt-radius',options.radius+'px');
+      state.theme=options.theme;state.glass=options.glass;storageScenario=options.folderScenario;
+      if(options.updateScenario!==configuredUpdateScenario){configuredUpdateScenario=options.updateScenario;updates.token++;clearTimeout(updates.timer);updates.scenario=options.updateScenario;updates.phase='idle';updates.progress=0;}
+      render();if(sheet)paintStorageSheet();
+    }});
+    t.addSelect(options,'theme',{label:'外观',options:[{label:'浅色',value:'light'},{label:'深色',value:'dark'},{label:'跟随系统',value:'system'}]});
+    t.addToggle(options,'glass',{label:'玻璃效果'});
+    t.addSelect(options,'updateScenario',{label:'更新流程演示',options:[{label:'正常更新',value:'normal'},{label:'网络失败',value:'network-failure'},{label:'本地适配未通过',value:'incompatible'},{label:'更新包校验失败',value:'checksum-failure'},{label:'新版启动失败',value:'startup-failure'}]});
+    t.addSelect(options,'folderScenario',{label:'目录状态演示',options:[{label:'目录可用',value:'normal'},{label:'没有写入权限',value:'permission'},{label:'磁盘未连接',value:'unavailable'},{label:'磁盘空间不足',value:'full'}]});
+    t.addSlider(options,'sidebar',{label:'侧栏宽度',min:144,max:208,step:8,unit:'px'});
+    t.addSlider(options,'radius',{label:'内容圆角',min:8,max:16,step:2,unit:'px'});
+  }catch(_){}}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeLibreTVDesign,{once:true});
+  else initializeLibreTVDesign();
+})();
+</script>

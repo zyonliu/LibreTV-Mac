@@ -222,17 +222,18 @@ export const api = {
   },
 
   /** 点播源探活：以搜索 "test" 的耗时与结果量衡量可用性 */
-  testSource: (url: string) =>
+  testSource: (url: string, signal?: AbortSignal) =>
     request<{ ok: boolean; ms: number; count?: number; error?: string }>('/api/source/test', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url }),
+      signal,
     }),
 
   /** 拉取远程数据源订阅（自动识别 LibreTV-SourceList JSON 与 TVBOX 配置 JSON） */
-  fetchSourceList: (url: string) => {
+  fetchSourceList: (url: string, signal?: AbortSignal) => {
     const sp = new URLSearchParams({ url });
-    return request<SourceListPayload>(`/api/source-list?${sp.toString()}`);
+    return request<SourceListPayload>(`/api/source-list?${sp.toString()}`, { signal });
   },
 
   /** 把源列表发布到公开粘贴板换回订阅链接（走服务端代理：绕开 CORS，且目标域名固定不可控） */
@@ -264,10 +265,10 @@ export const api = {
   },
 
   /** 直播订阅探活：以拉取解析耗时与频道数衡量可用性 */
-  liveTest: async (url: string) => {
+  liveTest: async (url: string, signal?: AbortSignal) => {
     const start = performance.now();
     try {
-      const playlist = await api.livePlaylist(url, true);
+      const playlist = await api.livePlaylist(url, true, signal);
       return { ok: true, ms: Math.round(performance.now() - start), count: playlist.channels.length, error: undefined as string | undefined };
     } catch (err) {
       return { ok: false, ms: Math.round(performance.now() - start), count: 0, error: err instanceof Error ? err.message : '失败' };

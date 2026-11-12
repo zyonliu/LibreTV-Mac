@@ -78,7 +78,7 @@ describe('DNS Rebinding & Connection SSRF Protection (#941)', () => {
       let res: Response;
       try {
         res = await runWithSSRFProtection({ allowPrivate: false }, async () => {
-          return await fetch('https://example.com', {
+          return await fetch(process.env.LIBRETV_TEST_PUBLIC_URL || 'https://example.com', {
             signal: AbortSignal.timeout(10000),
           });
         });
@@ -87,7 +87,7 @@ describe('DNS Rebinding & Connection SSRF Protection (#941)', () => {
         // dns.promises.lookup 按回调签名调用，受保护域内所有请求都挂到超时，
         // 而其余用例只断言 rejects.toThrow，全绿却抓不到）。
         const code = (err as { cause?: { code?: string } })?.cause?.code;
-        if (code === 'ERR_SSRF_BLOCKED') throw err;
+        if (code === 'ERR_SSRF_BLOCKED' || process.env.LIBRETV_REQUIRE_NETWORK_TESTS === '1') throw err;
         // 其余（DNS 失败 / 无出口 / 代理不可用）跳过：docker-publish 会在镜像构建里
         // 跑 npm test，硬依赖外网会让发版在受限网络下随机变红。
         ctx.skip();

@@ -52,8 +52,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         setResolved(apply('system'));
       }
     };
+    const nativeTheme = (event: Event) => {
+      const next = (event as CustomEvent).detail as ThemeChoice;
+      if (!['system','light','dark'].includes(next)) return;
+      localStorage.setItem(STORAGE_KEY, next); setThemeState(next); setResolved(apply(next));
+    };
+    window.addEventListener('libretv:desktop-theme', nativeTheme);
     media.addEventListener('change', onChange);
-    return () => media.removeEventListener('change', onChange);
+    return () => { media.removeEventListener('change', onChange); window.removeEventListener('libretv:desktop-theme', nativeTheme); };
   }, []);
 
   const setTheme = useCallback((t: ThemeChoice) => {
@@ -69,7 +75,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 export function ThemeToggle() {
   const { theme, resolved, setTheme } = useTheme();
   const next: ThemeChoice = theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light';
-  const label = theme === 'system' ? '跟随系统（当前深色）' : theme === 'dark' ? '深色' : '浅色';
+  const label = theme === 'system' ? `跟随系统（当前${resolved === 'dark' ? '深色' : '浅色'}）` : theme === 'dark' ? '深色' : '浅色';
   const nextLabel = next === 'light' ? '浅色' : next === 'dark' ? '深色' : '跟随系统';
 
   return (

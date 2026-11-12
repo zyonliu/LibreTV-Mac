@@ -12,3 +12,8 @@ vitest-results.json
 .zcode/
 .codebuddy/
 generated-images/
+# macOS local builds
+macos/.build/
+build/
+dist/
+.DS_Store
