@@ -4,9 +4,9 @@
 
 ## 工程与状态
 
-仓库：https://github.com/zyonliu/LibreTV-Mac；桌面发布标签 `v1.0.0`。原始上游：https://github.com/LibreSpark/LibreTV；上游源码基点 `dce5d6b9afb3fd9603b17a0912d62659921b5810`。始终在本仓库根目录执行命令。发布源码和本地交接记录同版本；按最终交付要求，GitHub Release 仅上传 Local PKG，会话交接 zip 和 SHA 清单留在本地。精确源码提交见本地 dist/verification/source-publication.json。zip 不含 .git、node_modules、生成物、用户配置或凭据。
+仓库：https://github.com/zyonliu/LibreTV-Mac；桌面发布标签 `v1.0.1`。原始上游：https://github.com/LibreSpark/LibreTV；上游源码基点 `dce5d6b9afb3fd9603b17a0912d62659921b5810`。始终在本仓库根目录执行命令。发布源码和本地交接记录同版本；按最终交付要求，GitHub Release 仅上传 Local PKG，会话交接 zip 和 SHA 清单留在本地。精确源码提交见本地 dist/verification/source-publication.json。zip 不含 .git、node_modules、生成物、用户配置或凭据。
 
-桌面版 1.0.0/build 4，初始捆绑官方 2.22.0，内置 Node 24.22.3。交付 `LibreTV-Mac-1.0.0-Local-arm64.pkg`；继续采用用户明确选择的 Local、ad-hoc app、无 Installer 签名/公证。2026-11-12 已恢复联网并修复桌面依赖，当前结果见 VERIFICATION.md 与 verification/security/summary.json；早先“网络失败未完成”的记录已由本轮结论替代。
+桌面版 1.0.1/build 5，初始捆绑官方 2.22.0，内置 Node 24.22.3。交付 `LibreTV-Mac-1.0.1-Local-arm64.pkg`；继续采用用户明确选择的 Local、ad-hoc app、无 Installer 签名/公证。1.0.0 的完整基线见 VERIFICATION.md；1.0.1 保留桌面菜单的直播布局修正与本轮验证见 LIVE-LAYOUT-1.0.1.md，交付审计记录见 verification/security/summary.json。
 
 **最新用户明确限定：官方包不管，只扫描我们的代码；LibreTV 内核是可变的。** 审计/修复仅覆盖桌面工程生产与开发依赖、实际 Desktop 载荷、原生桥/Runtime 和内置 Node。不得扫描或改写 Core 的 node_modules，不得把桌面 Next/PostCSS 版本推给官方包。Core 仅验证官方归档完整性与接口兼容，保持可独立替换、升级和回滚。
 
@@ -15,7 +15,7 @@
 1. 每人自己的 Mac 独立运行，安装者无需 Docker、Node、Homebrew、开发工具；技术栈 SwiftUI + WKWebView + 内置 Node。
 2. 官方优先，复用发现/直播/播放/历史/设置/下载/缓存/测活判定；桌面只增加导航、路径、找源、并发调度和更新，减少重复实现。
 3. 桌面与原版源、订阅、历史、设置共用。历史与原版设置在自己的内容区显示真实官方面板，隐藏其他模块，不在发现/直播弹出替代面板。
-4. 桌面隐藏重复官方顶栏，原版保留；外壳颜色随官方，布尔项使用 Apple 开关，多行选择仍为复选框。侧栏收起图标反向且可稳定点击。
+4. 桌面隐藏重复官方顶栏，原版保留。左侧桌面菜单必须保留，点击直播不能隐藏菜单；直播播放器和频道列表复用官方，桌面内容宽度 768–1023px 使用官方双栏布局，更窄窗口保留官方频道抽屉。原版响应式布局不变，Core 文件不改写。外壳颜色随官方，布尔项使用 Apple 开关，多行选择仍为复选框。侧栏收起图标反向且可稳定点击。
 5. 下载/导出/缓存路径由宿主提供；引擎、开关、配额、淘汰策略归官方，不另造下载器或缓存策略。
 6. 测活快速补位，32 全局、每 hostname 3、单项 8 秒；末尾 2 项再等最多 2.5 秒。暂停/继续/终止/重测与跨页保留任务。资源有界，不为每源开进程。
 7. 关主窗口即退出软件、本地内核和全部测活，正常/强杀都回收专属组；不能全局 pkill Node。

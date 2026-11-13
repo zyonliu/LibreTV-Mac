@@ -31,6 +31,45 @@ final class IntegrationTests: XCTestCase {
         });
         """) as? [[String:Any]] ?? []
     }
+    @MainActor func testOfficialLiveLayoutKeepsChannelsInDesktopContentWidth() async throws {
+        guard let project = ProcessInfo.processInfo.environment["LIBRETV_TEST_PROJECT"] else { throw XCTSkip("Set LIBRETV_TEST_PROJECT for real official live layout") }
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent("libretv-live-layout-\(UUID().uuidString)")
+        let suite = "LibreTVLiveLayout.\(UUID().uuidString)", defaults = UserDefaults(suiteName:suite)!
+        let prefs = DesktopPreferences(support:root.appendingPathComponent("Support"),defaults:defaults,home:root)
+        let resources = ProcessInfo.processInfo.environment["LIBRETV_TEST_RESOURCES"].map { URL(fileURLWithPath:$0) } ?? URL(fileURLWithPath:project).appendingPathComponent("build/LibreTV.app/Contents/Resources")
+        let service = ServiceManager(prefs:prefs,resources:resources)
+        let manager = DownloadManager(preferences:prefs)
+        let browser = BrowserModel(service:service,dataStore:.nonPersistent(),downloads:manager)
+        let window = NSWindow(contentRect:NSRect(x:0,y:0,width:960,height:700),styleMask:[.titled],backing:.buffered,defer:false)
+        window.isReleasedWhenClosed = false
+        defer { window.orderOut(nil); window.contentView = nil; browser.reset(); manager.shutdown(); service.stop(); defaults.removePersistentDomain(forName:suite); try? FileManager.default.removeItem(at:root) }
+        await service.start(); XCTAssertTrue(service.ready,service.diagnostics())
+        let web = browser.view(for:"original")
+        window.contentView = web; web.frame = NSRect(x:0,y:0,width:960,height:700); window.orderFrontRegardless()
+        await browser.showOfficial(path:"live")
+        try await ready(web,script:"!!document.querySelector('main aside [data-channel-list]') && document.documentElement.dataset.desktopMode === 'desktop'")
+        let metrics = """
+        const aside=document.querySelector('main aside'),header=document.querySelector('header:has(a[aria-label="LibreTV 首页"])');
+        return {width:innerWidth,header:getComputedStyle(header).display,panel:getComputedStyle(aside).display,position:getComputedStyle(aside).position,columns:getComputedStyle(aside.parentElement).gridTemplateColumns.split(' ').length,panelWidth:aside.getBoundingClientRect().width};
+        """
+        let desktop = try await js(web,metrics) as! [String:Any]
+        XCTAssertEqual(desktop["width"] as? Int,960); XCTAssertEqual(desktop["header"] as? String,"none")
+        XCTAssertEqual(desktop["panel"] as? String,"flex"); XCTAssertEqual(desktop["columns"] as? Int,2)
+        XCTAssertEqual(desktop["panelWidth"] as? Int,320); XCTAssertEqual(desktop["position"] as? String,"sticky")
+        let token = try await js(web,"window.__liveLayoutToken=crypto.randomUUID();return window.__liveLayoutToken;") as? String
+        await browser.switchMode("original")
+        let original = try await js(web,metrics) as! [String:Any]
+        XCTAssertNotEqual(original["header"] as? String,"none"); XCTAssertEqual(original["panel"] as? String,"none")
+        await browser.switchMode("desktop")
+        let resumed = try await js(web,metrics) as! [String:Any]
+        XCTAssertEqual(resumed["panel"] as? String,"flex")
+        let resumedToken = try await js(web,"return window.__liveLayoutToken;") as? String
+        XCTAssertEqual(resumedToken,token)
+        web.frame.size.width = 700
+        try await ready(web,script:"innerWidth === 700 && getComputedStyle(document.querySelector('main aside')).display === 'none'")
+        web.frame.size.width = 1100
+        try await ready(web,script:"innerWidth === 1100 && getComputedStyle(document.querySelector('main aside')).display === 'flex'")
+    }
     @MainActor func testOfficialUpgradeRollbackSharedSettingsCacheAndNativeSave() async throws {
         guard let project = ProcessInfo.processInfo.environment["LIBRETV_TEST_PROJECT"] else { throw XCTSkip("Set LIBRETV_TEST_PROJECT for full local integration") }
         let projectURL = URL(fileURLWithPath: project), root = FileManager.default.temporaryDirectory.appendingPathComponent("libretv-integration-\(UUID().uuidString)")

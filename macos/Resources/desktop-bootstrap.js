@@ -125,7 +125,18 @@ Object.defineProperty(window,"__ltNativePromise",{value:Promise});
 (() => {
  const host=window.libreTVDesktop;if(!host)return;
  const setup=()=>{
-  const style=document.createElement('style');style.textContent='html[data-desktop-mode="desktop"] header:has(a[aria-label="LibreTV 首页"]){display:none!important}';document.head.append(style);
+  const style=document.createElement('style');style.textContent=`
+   html[data-desktop-mode="desktop"] header:has(a[aria-label="LibreTV 首页"]){display:none!important}
+   /* Keep the native menu. Its width must not turn an otherwise desktop-sized
+      official live page into a channel drawer. Narrow windows keep that drawer. */
+   @media (min-width:768px) and (max-width:1023px){
+    html[data-desktop-mode="desktop"] main>div:has(>aside [data-channel-list]){grid-template-columns:minmax(0,1fr) 320px!important}
+    html[data-desktop-mode="desktop"] main>div:has(>aside [data-channel-list])>aside{display:flex!important;position:sticky!important;inset:auto!important;top:5rem!important;height:calc(100vh - 6.5rem)!important;border-radius:.75rem!important;box-shadow:none!important}
+    html[data-desktop-mode="desktop"] main>div:has(>aside [data-channel-list])>aside>div:has(>button[aria-label="关闭频道列表"]),
+    html[data-desktop-mode="desktop"] main>div:has(>aside [data-channel-list])>div[aria-hidden="true"][class~="lg:hidden"],
+    html[data-desktop-mode="desktop"] main:has(>div>aside [data-channel-list])>button[class~="lg:hidden"]{display:none!important}
+   }
+  `;document.head.append(style);
   const palette=()=>{if(location.pathname.startsWith('/desktop'))return;const css=getComputedStyle(document.documentElement),colors={};for(const name of ['page','surface','surface-raised','line','content','muted','faint','accent','accent-hover','hover','chip','on-accent','danger','success','warning'])colors[name]=css.getPropertyValue('--c-'+name).trim().replace(/\s+/g,' ');host.call('ui.palette',{colors,appearance:localStorage.getItem('libretv-theme'),resolved:document.documentElement.classList.contains('dark')?'dark':'light'}).catch(()=>{});};
   new MutationObserver(palette).observe(document.documentElement,{attributes:true,attributeFilter:['class']});addEventListener('load',palette);matchMedia('(prefers-color-scheme: dark)').addEventListener('change',palette);palette();
  };

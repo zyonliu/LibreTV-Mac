@@ -4,12 +4,14 @@
 
 桌面层提供原生窗口、保存路径、找源与并发调度、进程管理和内核更新；发现、直播、播放、历史、设置、下载、缓存及测活判定优先复用官方能力。
 
-> **当前交付：1.0.0 Local / build 4，仅 Apple Silicon。** 应用为 ad-hoc 签名，PKG 无 Installer 签名、未经 Apple 公证。它是本地安装测试包，不具有正式 Developer ID 分发信任；macOS 可能阻止安装或打开。不要把校验通过理解为已完成全新 Mac 的 Gatekeeper 验收。
+1.0.1 修正直播内容区：左侧桌面菜单始终保留，点击直播不会隐藏菜单。网页层隐藏官方顶栏，播放器与频道列表继续复用官方布局；在桌面内容区宽度 768–1023px 时沿用官方双栏显示，更窄窗口保留官方频道抽屉，原版模式的响应式布局不变。
+
+> **当前交付：1.0.1 Local / build 5，仅 Apple Silicon。** 应用为 ad-hoc 签名，PKG 无 Installer 签名、未经 Apple 公证。它是本地安装测试包，不具有正式 Developer ID 分发信任；macOS 可能阻止安装或打开。不要把校验通过理解为已完成全新 Mac 的 Gatekeeper 验收。
 
 ## 下载与安装
 
-- [1.0.0 发布页](https://github.com/zyonliu/LibreTV-Mac/releases/tag/v1.0.0)
-- [Local PKG：LibreTV-Mac-1.0.0-Local-arm64.pkg](https://github.com/zyonliu/LibreTV-Mac/releases/download/v1.0.0/LibreTV-Mac-1.0.0-Local-arm64.pkg)
+- [1.0.1 发布页](https://github.com/zyonliu/LibreTV-Mac/releases/tag/v1.0.1)
+- [Local PKG：LibreTV-Mac-1.0.1-Local-arm64.pkg](https://github.com/zyonliu/LibreTV-Mac/releases/download/v1.0.1/LibreTV-Mac-1.0.1-Local-arm64.pkg)
 
 适用 Apple Silicon（M 系列芯片），最低构建目标 macOS 14.0。已在 macOS 27.2.1 / SDK 27.2 验证；尚未完成 macOS 14 实机、干净 Mac/VM、Intel 验收。新版系统使用原生玻璃工具栏，旧系统保留系统兼容外观。
 
@@ -21,13 +23,13 @@
 
 ## 三个独立版本
 
-| 层 | 1.0.0 初始交付 | 版本来源 |
+| 层 | 1.0.1 初始交付 | 版本来源 |
 | --- | --- | --- |
-| macOS 桌面应用 / PKG | 1.0.0 / build 4 | `macos/Info.plist` |
+| macOS 桌面应用 / PKG | 1.0.1 / build 5 | `macos/Info.plist` |
 | 初始官方内核 | 2.22.0 | 官方 Release；构建默认值来自 `package.json.version` |
 | 内置 Node.js | 24.22.3 LTS | `scripts/runtime-config.json` |
 
-**官方内核是可变的，不与桌面版号绑定。** `package.json` 的 2.22.0 不是桌面 PKG 版本，不能为发布桌面 1.0.0 把它改成 1.0.0。桌面增强层的 Next/Undici 依赖也不会覆盖已安装或未来更新的官方 Core。
+**官方内核是可变的，不与桌面版号绑定。** `package.json` 的 2.22.0 不是桌面 PKG 版本，不能为发布桌面 1.0.1 把它改成 1.0.1。桌面增强层的 Next/Undici 依赖也不会覆盖已安装或未来更新的官方 Core。
 
 ## 桌面功能
 
@@ -121,7 +123,7 @@ LIBRETV_TEST_MEDIA_URL=http://127.0.0.1:17995/sample.m3u8 ./scripts/verify-macos
 ./scripts/package-macos.sh
 ```
 
-打包生成 `dist/LibreTV-Mac-1.0.0-Local-arm64.pkg`，并展开 PKG 比较载荷与已签名 app 的完整清单。重复打包前，仅删除脚本生成的 `build/pkg-stage`。要从展开的载荷执行原生测试，设置 `LIBRETV_TEST_RESOURCES` 指向其绝对 `Contents/Resources` 路径。
+打包生成 `dist/LibreTV-Mac-1.0.1-Local-arm64.pkg`，并展开 PKG 比较载荷与已签名 app 的完整清单。重复打包前，仅删除脚本生成的 `build/pkg-stage`。要从展开的载荷执行原生测试，设置 `LIBRETV_TEST_RESOURCES` 指向其绝对 `Contents/Resources` 路径。
 
 发布时将最终记录整理到 `dist/verification/`，完成签名、载荷、依赖与 SHA 校验。`python3 scripts/cleanup-session.py` 只清理明确生成物。`python3 scripts/create-handoff.py` 可生成内部会话交接 zip 与校验记录；本次按要求仅向 Release 上传 Local PKG，内部交接包和 SHA 清单不作为公开附件。
 
